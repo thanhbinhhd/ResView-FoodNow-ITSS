@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  start_num: 1
+  user: one
+  restaurant: one
+
+two:
+  start_num: 1
+  user: two
+  restaurant: two
