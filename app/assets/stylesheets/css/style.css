@@ -917,19 +917,7 @@ footer ul.links li a:hover:after {
   opacity: 1;
   color: #3578fa;
 }
-footer ul.links li a:after {
-  font-family: 'ElegantIcons';
-  content: "\24";
-  position: absolute;
-  margin-left: 5px;
-  top: 1px;
-  opacity: 0;
-  -moz-transition: all 0.5s ease;
-  -o-transition: all 0.5s ease;
-  -webkit-transition: all 0.5s ease;
-  -ms-transition: all 0.5s ease;
-  transition: all 0.5s ease;
-}
+
 footer ul.contacts li {
   padding-left: 30px;
   position: relative;
