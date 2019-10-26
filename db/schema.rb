@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 2019_10_21_061101) do
 
   create_table "foods", force: :cascade do |t|
     t.string "name"
-    t.decimal "price"
+    t.integer "price"
     t.integer "restaurant_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

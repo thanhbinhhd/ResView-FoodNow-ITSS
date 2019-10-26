@@ -5,3 +5,18 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+20.times do |r|
+  restaurant = Restaurant.new
+  restaurant.name = "Restaurant " + r.to_s
+  restaurant.address = "Thanh Xuan, Ha Noi"
+  restaurant.phone = 1234567890
+  restaurant.description = "description of restaurant " + r.to_s
+  restaurant.save!
+  10.times do |f|
+    food = restaurant.foods.build
+    food.name = "Food " + f.to_s
+    food.price = 100000
+    food.save!
+  end
+end
