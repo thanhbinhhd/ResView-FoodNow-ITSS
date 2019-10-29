@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 2019_10_21_061101) do
     t.string "address"
     t.string "phone"
     t.text "description"
+    t.float "vote_num"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -87,7 +88,7 @@ ActiveRecord::Schema.define(version: 2019_10_21_061101) do
   end
 
   create_table "votes", force: :cascade do |t|
-    t.integer "start_num"
+    t.integer "star_num"
     t.integer "user_id"
     t.integer "restaurant_id"
     t.datetime "created_at", null: false
