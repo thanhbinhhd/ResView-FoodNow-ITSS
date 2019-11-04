@@ -6,6 +6,11 @@
 							<div class="row">
 								<div class="col-md-6">
 									<figure>
+										<% if resource.avatar.attached? %>
+											<%= image_tag resource.avatar.variant(resize: "100x100!"), class: "rounded-circle" %>
+										<% else %>
+											<%= image_tag gravatar_image_url(current_user.email, size: 100), height: 100, width: 100, class: "rounded-circle" %>
+										<% end %>
 									</figure>
 									<h1><%= current_user.username %></h1>
 									<span><%= current_user.email %></span>
@@ -38,12 +43,14 @@
 							<div class="settings_panel">
 							    <h3>Personal settings</h3>
 							    <hr>
-								<div class="form-group">
-									<label>Edit Avatar</label>
-									<div class="fileupload">
-   									 <%= f.file_field :avatar %>
+
+								<div class="form-group>
+									<label>Edit Avatar</label
+									<div class="col-sm-8">
+										<%= f.file_field :avatar %>
 									</div>
 								</div>
+
 								<div class="form-group">
 
 								    <%= f.label :Edit_Email %><br />
