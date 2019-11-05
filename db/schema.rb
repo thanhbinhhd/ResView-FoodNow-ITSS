@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_21_061101) do
+ActiveRecord::Schema.define(version: 2019_10_21_061051) do
 
   create_table "comments", force: :cascade do |t|
     t.text "content"
@@ -22,17 +22,10 @@ ActiveRecord::Schema.define(version: 2019_10_21_061101) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
-  create_table "food_images", force: :cascade do |t|
-    t.string "image"
-    t.integer "food_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["food_id"], name: "index_food_images_on_food_id"
-  end
-
   create_table "foods", force: :cascade do |t|
     t.string "name"
     t.integer "price"
+    t.string "image"
     t.integer "restaurant_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

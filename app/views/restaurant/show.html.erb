@@ -1,1 +1,134 @@
-<%= @res.name %>
+<main>
+  <div class="reviews_summary">
+    <div class="wrapper">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8">
+            <h1><%= @res.name %></h1>
+            <h6 class="text_white">
+              <i class="fa fa-location-arrow"></i>
+              <%= @res.address %>
+            </h6>
+            <h6 class="text_white"><i class="fa fa-clock-o houricon"></i> 10:30 - 21:00</h6>
+            <h6 class="text_white"><i class="fa fa-tag minmaxpriceicon"></i> 25.000đ - 50.000đ</h6>
+            <span class="rating"><i class="fa fa-star"></i><em><%= @res.vote_num %>/5.00</em></span>
+
+          </div>
+          <div class="col-lg-4">
+            <img src="https://images.foody.vn/res/g96/953948/prof/s640x400/foody-upload-api-foody-mobile-avar166-190906143554.jpg" style="width: 100%">
+          </div>
+        </div>
+      </div>
+      <!-- /container -->
+    </div>
+  </div>
+  <!-- /reviews_summary -->
+
+  <div class="container margin_60_35">
+    <div class="row">
+      <div class="col-lg-9">
+        <div class="review_card">
+          <div class="row">
+            <h5 style="width: 100%; padding: 10px 15px 0px 10px;border-bottom: 1px solid #eee;margin-bottom: 20px;" id="menu-food">Menu</h5>
+            <hr>
+          </div>
+          <div class="row">
+            <% @foods.each do |f| %>
+            <div class="col-md-6 my-2 row">
+              <div class="col-md-2 user_info">
+                <figure style="border-radius: 0">
+                  <%= image_tag f.image %>
+                </figure>
+              </div>
+              <div class="col-md-10 review_content">
+                <h6><%= f.name %></h6>
+                <h6><i class="fa fa-tag minmaxpriceicon"></i> <%= f.price %> đ</h6>
+              </div>
+            </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="review_card">
+          <div class="row">
+            <h5 style="width: 100%; padding: 10px 15px 0px 10px;border-bottom: 1px solid #eee;margin-bottom: 20px;" id="photo">Một vài hình ảnh</h5>
+            <hr>
+          </div>
+          <div class="row" style="padding-bottom: 15px">
+            <div class="container">
+              <ul class="nav nav-tabs" role="tablist">
+                <li class="nav-item">
+                  <a class="nav-link active" data-toggle="tab" href="#home">Không gian</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" data-toggle="tab" href="#menu1">Món ăn</a>
+                </li>
+              </ul>
+
+              <!-- Tab panes -->
+              <div class="tab-content">
+                <div id="home" class="container tab-pane active"><br>
+                  <% @res_imgs.each do |r_i| %>
+                  <%= image_tag r_i.image, class: "w-24"  %>
+                  <% end %>
+                </div>
+                <div id="menu1" class="container tab-pane fade"><br>
+                  <% @foods.each do |f| %>
+                  <%= image_tag f.image, class: "w-24" %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row" style="padding-bottom: 15px">
+
+          </div>
+        </div>
+        <div class="review_card digg_pagination">
+          <div class="row">
+            <h5 style="width: 100%; padding: 10px 15px 0px 10px;border-bottom: 1px solid #eee;margin-bottom: 20px;" id="comment">Bình luận</h5>
+            <hr>
+          </div>
+          <% @res_comments.each do |r_c| %>
+          <div class="row"  style="padding-bottom: 15px;">
+            <div class="col-md-2 user_info">
+              <figure>
+                <% if r_c.user.avatar %>
+                <%= image_tag r_c.user.avatar %>
+                <% end %>
+              </figure>
+              <h5><%= r_c.user.username %></h5>
+            </div>
+            <div class="col-md-10 review_content">
+              <div class="clearfix add_bottom_15">
+                <span class="rating">
+                  <% if r_c.user.votes.find_by(restaurant_id: @res.id) %>
+                  <i class="fa fa-star"></i>
+                  <em><%= r_c.user.votes.find_by(restaurant_id: @res.id).star_num %>/5.00</em>
+                  <% end %>
+                </span>
+                <em><%= time_ago_in_words(r_c.created_at) %></em>
+              </div>
+              <p><%= r_c.content %></p>
+            </div>
+          </div>
+          <% end %>
+          <!-- /row -->
+          <%= will_paginate @res_comments %>
+        </div>
+      </div>
+      <!-- /col -->
+      <div class="col-lg-3">
+        <div class="box_general company_info">
+          <a href="#menu-food"><h6 style="width: 100%; padding: 10px 15px 0px 10px;border-bottom: 1px solid #eee;margin-bottom: 20px;"><i class="fa fa-arrow-left"></i> Menu</h6></a>
+          <a href="#photo"><h6 style="width: 100%; padding: 10px 15px 0px 10px;border-bottom: 1px solid #eee;margin-bottom: 20px;"><i class="fa fa-arrow-left"></i> Một vài hình ảnh
+          </h6></a>
+          <a href="#comment"><h6 style="width: 100%; padding: 10px 15px 0px 10px;border-bottom: 1px solid #eee;margin-bottom: 20px;"><i class="fa fa-arrow-left"></i> Bình luận
+          </h6></a>
+        </div>
+      </div>
+    </div>
+    <!-- /row -->
+  </div>
+  <!-- /container -->
+
+</main>
