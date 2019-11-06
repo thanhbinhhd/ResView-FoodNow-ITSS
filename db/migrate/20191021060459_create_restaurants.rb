@@ -5,6 +5,7 @@ class CreateRestaurants < ActiveRecord::Migration[5.2]
       t.string :address
       t.string :phone
       t.text :description
+      t.float :vote_num
 
       t.timestamps
     end

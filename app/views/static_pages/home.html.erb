@@ -24,91 +24,38 @@
 		</div>
 	</div>
 </section>
-<!-- /hero_single -->
 
 <div class="container margin_60_35">
 	<div class="main_title_3">
-		<h2>Nhà hàng</h2>
-		<a href="all-categories.html">Xem tất cả</a>
+		<h2>Nhà hàng được đánh giá cao nhất</h2>
+		<%= link_to "Xem tất cả", restaurant_index_path %>
 	</div>
 	<div class="row justify-content-center">
+		<% @best_res.each do |r| %>
 		<div class="col-lg-4 col-sm-6">
-			<a href="grid-listings-filterstop.html" class="grid_item">
+			<%= link_to restaurant_path(r), class: "grid_item" do %>
 				<figure>
 					<img src="assets/img/box_cat_home_1.jpg" alt="">
 					<div class="info">
-						<small><i class="fas fa-comment"></i> 356 Reviews</small>
-						<span class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half"></i><em>4.50/5.00</em></span>
-						<h3>Bún đậu mắm tôm bà Thu</h3>
+						<small><i class="fas fa-comment"></i> <%= r.comments.count %> Reviews</small>
+						<span class="rating">
+							<% (1..5).each do |i| %>
+								<% if i <= r.vote_num %>
+								<i class="fas fa-star"></i>
+								<% elsif (i - r.vote_num) <1 %>
+								<i class="fas fa-star-half-alt"></i>
+								<% else %>
+								<i class="far fa-star"></i>
+								<% end %>
+							<% end %>
+							<span class="text-white"><%= r.vote_num %>/5.0</span>
+						</span>
+						<h3><%= r.name %></h3>
 					</div>
 				</figure>
-			</a>
+			<% end %>
 		</div>
-		<!-- /grid_item -->
-		<div class="col-lg-4 col-sm-6">
-			<a href="grid-listings-filterstop.html" class="grid_item">
-				<figure>
-					<img src="assets/img/box_cat_home_1.jpg" alt="">
-					<div class="info">
-						<small><i class="fas fa-comment"></i> 356 Reviews</small>
-						<span class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half"></i><em>4.50/5.00</em></span>
-						<h3>Cháo lòng cô Bắc</h3>
-					</div>
-				</figure>
-			</a>
-		</div>
-		<!-- /grid_item -->
-		<div class="col-lg-4 col-sm-6">
-			<a href="grid-listings-filterstop.html" class="grid_item">
-				<figure>
-					<img src="assets/img/box_cat_home_1.jpg" alt="">
-					<div class="info">
-						<small><i class="fas fa-comment"></i> 356 Reviews</small>
-						<span class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half"></i><em>4.50/5.00</em></span>
-						<h3>Phở gà gia truyền số nhà 11</h3>
-					</div>
-				</figure>
-			</a>
-		</div>
-		<!-- /grid_item -->
-		<div class="col-lg-4 col-sm-6">
-			<a href="grid-listings-filterstop.html" class="grid_item">
-				<figure>
-					<img src="assets/img/box_cat_home_1.jpg" alt="">
-					<div class="info">
-						<small><i class="fas fa-comment"></i> 356 Reviews</small>
-						<span class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half"></i><em>4.50/5.00</em></span>
-						<h3>Hàng cơm thịt rang cháy cạnh</h3>
-					</div>
-				</figure>
-			</a>
-		</div>
-		<!-- /grid_item -->
-		<div class="col-lg-4 col-sm-6">
-			<a href="grid-listings-filterstop.html" class="grid_item">
-				<figure>
-					<img src="assets/img/box_cat_home_1.jpg" alt="">
-					<div class="info">
-						<small><i class="fas fa-comment"></i> 356 Reviews</small>
-						<span class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half"></i><em>4.50/5.00</em></span>
-						<h3>Lẩu Toco Toco</h3>
-					</div>
-				</figure>
-			</a>
-		</div>
-		<!-- /grid_item -->
-		<div class="col-lg-4 col-sm-6">
-			<a href="grid-listings-filterstop.html" class="grid_item">
-				<figure>
-					<img src="assets/img/box_cat_home_1.jpg" alt="">
-					<div class="info">
-						<small><i class="fas fa-comment"></i> 356 Reviews</small>
-						<span class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half"></i><em>4.50/5.00</em></span>
-						<h3>Trà sữa KingBBQ</h3>
-					</div>
-				</figure>
-			</a>
-		</div>
+		<% end %>
 		<!-- /grid_item -->
 	</div>
 	<!-- /row -->
@@ -119,7 +66,35 @@
 	<div class="container margin_60">
 		<div class="main_title_3">
 			<h2>Review mới nhất</h2>
-			<a href="reviews-page.html">Xem tất cả</a>
+			<%= link_to "Xem tất cả", restaurant_index_path %>
+		</div>
+		<div class="row justify-content-center">
+			<% @recent_res.each do |r| %>
+			<div class="col-lg-4 col-sm-6">
+				<%= link_to restaurant_path(r), class: "grid_item" do %>
+					<figure>
+						<img src="assets/img/box_cat_home_1.jpg" alt="">
+						<div class="info">
+							<small><i class="fas fa-comment"></i> <%= r.comments.count %> Reviews</small>
+							<span class="rating">
+								<% (1..5).each do |i| %>
+									<% if i <= r.vote_num %>
+									<i class="fas fa-star"></i>
+									<% elsif (i - r.vote_num) <1 %>
+									<i class="fas fa-star-half-alt"></i>
+									<% else %>
+									<i class="far fa-star"></i>
+									<% end %>
+								<% end %>
+								<span class="text-white"><%= r.vote_num %>/5.0</span>
+							</span>
+							<h3><%= r.name %></h3>
+						</div>
+					</figure>
+				<% end %>
+			</div>
+			<% end %>
+			<!-- /grid_item -->
 		</div>
 
 		<div id="reccomended" class="owl-carousel owl-theme">
