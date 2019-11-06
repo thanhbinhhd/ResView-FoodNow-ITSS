@@ -1,6 +1,11 @@
 class RestaurantController < ApplicationController
   def index
-    @all_res = Restaurant.all.asc
+    if params[:name]
+      @all_res = Restaurant.where('name LIKE ?', "%#{params[:name]}%")
+    else
+      @all_res = Restaurant.all.asc
+    end
+
   end
 
   def show

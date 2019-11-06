@@ -1,6 +1,31 @@
 <main>
   <div class="container margin_80">
 
+    <section class="hero_single version_1_1">
+    <div class="wrapper">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-9">
+              <form method="get" action="<%= restaurant_index_path %>">
+                <div class="row no-gutters custom-search-input-2">
+                  <div class="col-lg-9">
+                    <div class="form-group">
+                      <input name="name" class="form-control" type="text" placeholder="Bạn đang muốn tìm ..." >
+                      <i class="fas fa-search"></i>
+                    </div>
+                  </div>
+                  <div class="col-lg-3">
+                    <input type="submit" value="Tìm kiếm">
+                  </div>
+                </div>
+                <!-- /row -->
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <div class="isotope-wrapper py-3">
       <% $count = 0 %>
       <% @all_res.each do |r| %>
@@ -9,7 +34,12 @@
         <div class="row">
           <div class="col-md-9">
             <div class="company_info">
-              <figure><a href="reviews-page.html"><img src="assets/img/avatar.jpg" alt=""></a></figure>
+              <figure>
+                <a href="<%= restaurant_path(r) %>">
+                  <!-- <img src="img/brands/1.png" alt=""> -->
+                  <img src="<%= r.res_images.first().image %>" alt="">
+                </a>
+              </figure>
               <h3><%= r.name %></h3>
               <p>Địa chỉ: <%= r.address %></p>
               <p>Số điện thoại: <%= r.phone %></p>

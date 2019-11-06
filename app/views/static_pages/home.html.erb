@@ -5,11 +5,11 @@
 			<p>Tìm kiếm nhà hàng mà bạn mong muốn</p>
 			<div class="row justify-content-center">
 				<div class="col-lg-9">
-					<form method="post" action="grid-listings-filterstop.html">
+					<form method="get" action="<%= restaurant_index_path %>">
 						<div class="row no-gutters custom-search-input-2">
 							<div class="col-lg-9">
 								<div class="form-group">
-									<input class="form-control" type="text" placeholder="Bạn đang muốn tìm ...">
+									<input name="name" class="form-control" type="text" placeholder="Bạn đang muốn tìm ..." >
 									<i class="fas fa-search"></i>
 								</div>
 							</div>
@@ -36,7 +36,9 @@
 		<div class="col-lg-4 col-sm-6">
 			<%= link_to restaurant_path(r), class: "grid_item" do %>
 				<figure>
-					<img src="assets/img/box_cat_home_1.jpg" alt="">
+					<!-- <img src="assets/img/box_cat_home_1.jpg" alt=""> -->
+          			<img src="<%= r.res_images.first().image %>" alt="">
+
 					<div class="info">
 						<small><i class="fas fa-comment"></i> <%= r.comments.count %> Reviews</small>
 						<span class="rating">
@@ -75,7 +77,9 @@
 			<div class="col-lg-4 col-sm-6">
 				<%= link_to restaurant_path(r), class: "grid_item" do %>
 					<figure>
-						<img src="assets/img/box_cat_home_1.jpg" alt="">
+						<!-- <img src="assets/img/box_cat_home_1.jpg" alt=""> -->
+						<img src="<%= r.res_images.first().image %>" alt="">
+
 						<div class="info">
 							<small><i class="fas fa-comment"></i> <%= r.comments.count %> Reviews</small>
 							<span class="rating">
