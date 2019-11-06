@@ -9,7 +9,12 @@
         <div class="row">
           <div class="col-md-9">
             <div class="company_info">
-              <figure><a href="reviews-page.html"><img src="img/brands/1.png" alt=""></a></figure>
+              <figure>
+                <a href="reviews-page.html">
+                  <!-- <img src="img/brands/1.png" alt=""> -->
+                  <img src="<%= r.res_images.first().image %>" alt="">
+                </a>
+              </figure>
               <h3><%= r.name %></h3>
               <p>Địa chỉ: <%= r.address %></p>
               <p>Số điện thoại: <%= r.phone %></p>

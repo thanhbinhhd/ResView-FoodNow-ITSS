@@ -35,7 +35,9 @@
 		<div class="col-lg-4 col-sm-6">
 			<%= link_to restaurant_path(r), class: "grid_item" do %>
 				<figure>
-					<img src="assets/img/box_cat_home_1.jpg" alt="">
+					<!-- <img src="assets/img/box_cat_home_1.jpg" alt=""> -->
+          			<img src="<%= r.res_images.first().image %>" alt="">
+
 					<div class="info">
 						<small><i class="fas fa-comment"></i> <%= r.comments.count %> Reviews</small>
 						<span class="rating">
@@ -73,7 +75,9 @@
 			<div class="col-lg-4 col-sm-6">
 				<%= link_to restaurant_path(r), class: "grid_item" do %>
 					<figure>
-						<img src="assets/img/box_cat_home_1.jpg" alt="">
+						<!-- <img src="assets/img/box_cat_home_1.jpg" alt=""> -->
+						<img src="<%= r.res_images.first().image %>" alt="">
+
 						<div class="info">
 							<small><i class="fas fa-comment"></i> <%= r.comments.count %> Reviews</small>
 							<span class="rating">

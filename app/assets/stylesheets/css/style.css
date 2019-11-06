@@ -4,7 +4,7 @@ Theme URI: http://www.ansonika.com/vanno/
 Author: Ansonika
 Author URI: http://themeforest.net/user/Ansonika/
 
-[Table of contents] 
+[Table of contents]
 
 1. SITE STRUCTURE and TYPOGRAPHY
 - 1.1 Typography
@@ -17,7 +17,7 @@ Author URI: http://themeforest.net/user/Ansonika/
 - 2.3 Detail page
 - 2.4 Write a review page
 - 2.5 Login/register
-- 2.6 Company landing 
+- 2.6 Company landing
 - 2.7 Pricing page
 - 2.8 Faq/help
 - 2.9 Contacts
@@ -4239,7 +4239,7 @@ a.btn_support:before {
   }
 }
 .company_listing .company_info figure img {
-  width: 98px;
+  width: 200px;
   height: auto;
   position: absolute;
   left: 50%;
