@@ -1,5 +1,5 @@
 <main>
-  <div class="container margin_60_35">
+  <div class="container margin_80">
 
     <div class="isotope-wrapper py-3">
       <% $count = 0 %>
@@ -9,7 +9,7 @@
         <div class="row">
           <div class="col-md-9">
             <div class="company_info">
-              <figure><a href="reviews-page.html"><img src="img/brands/1.png" alt=""></a></figure>
+              <figure><a href="reviews-page.html"><img src="assets/img/avatar.jpg" alt=""></a></figure>
               <h3><%= r.name %></h3>
               <p>Địa chỉ: <%= r.address %></p>
               <p>Số điện thoại: <%= r.phone %></p>
@@ -18,7 +18,7 @@
           <div class="col-md-3">
             <div class="text-center float-lg-right">
               <span class="rating">
-                <strong><%= r.comments.count %> comment <%= r.vote_num %>/5.0</strong>
+                <strong><%= r.comments.count %> comments <%= r.vote_num %>/5.0</strong>
                 <% (1..5).each do |i| %>
                   <% if i <= r.vote_num %>
                   <i class="fas fa-star"></i>

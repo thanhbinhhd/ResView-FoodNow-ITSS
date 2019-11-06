@@ -1,8 +1,8 @@
 <header class="header menu_fixed">
   <div id="logo">
-    <a href="index.html">
-      <img src="assets/img/logo.png" width="140" height="35" alt="" class="logo_normal">
-      <img src="assets/img/logo.png" width="140" height="35" alt="" class="logo_sticky">
+    <a href="#">
+      <img src="https://i.imgur.com/usFXtM1.png" width="auto" height="40" alt="" class="logo_normal">
+      <img src="https://i.imgur.com/usFXtM1.png" width="auto" height="40" alt="" class="logo_sticky">
     </a>
   </div>
   <ul id="top_menu">
@@ -27,6 +27,9 @@
       <li><span>
         <%= link_to "Trang chủ", root_path %>
       </span></li>
+      <li><span>
+        <%= link_to "Nhà hàng", restaurant_index_path %>
+      </span></li>      
       <% if user_signed_in? %>
       <li><span>
         <%= link_to "Trang cá nhân", edit_user_registration_path %>
