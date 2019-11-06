@@ -91,9 +91,10 @@
           <% @res_comments.each do |r_c| %>
           <div class="row"  style="padding-bottom: 15px;">
             <div class="col-md-2 user_info">
-              <figure>
-                <% if r_c.user.avatar %>
-                <%= image_tag r_c.user.avatar %>
+                <% if r_c.user.avatar.attached? %>
+                  <%= image_tag r_c.user.avatar.variant(resize: "32x32!"), class: "rounded-circle" %>
+                <% else %>
+                  <%= image_tag gravatar_image_url(r_c.user.email, size: 32), height: 32, width: 32, class: "rounded-circle" %>
                 <% end %>
               </figure>
               <h5><%= r_c.user.username %></h5>
