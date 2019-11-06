@@ -1257,6 +1257,25 @@ ul#additional_links li:after {
     background-size: cover;
   }
 }
+
+.hero_single.version_1_1 {
+  height: 100px;
+  background: url(../img/home_section_1.jpg) top center no-repeat fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+@media (max-width: 767px) {
+  .hero_single.version_1_1 {
+    background: url(../img/home_section_1.jpg) -300px top no-repeat fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+}
+
 .hero_single.version_1 .wrapper {
   background-color: black;
   background-color: rgba(0, 0, 0, 0.6);
