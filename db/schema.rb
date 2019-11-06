@@ -10,7 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_21_061101) do
+ActiveRecord::Schema.define(version: 2019_11_04_171903) do
+
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.integer "record_id", null: false
+    t.integer "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+ActiveRecord::Schema.define(version: 2019_10_21_061051) do
 
   create_table "comments", force: :cascade do |t|
     t.text "content"
@@ -22,17 +44,10 @@ ActiveRecord::Schema.define(version: 2019_10_21_061101) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
-  create_table "food_images", force: :cascade do |t|
-    t.string "image"
-    t.integer "food_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["food_id"], name: "index_food_images_on_food_id"
-  end
-
   create_table "foods", force: :cascade do |t|
     t.string "name"
-    t.decimal "price"
+    t.integer "price"
+    t.string "image"
     t.integer "restaurant_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -52,6 +67,7 @@ ActiveRecord::Schema.define(version: 2019_10_21_061101) do
     t.string "address"
     t.string "phone"
     t.text "description"
+    t.float "vote_num"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -87,7 +103,7 @@ ActiveRecord::Schema.define(version: 2019_10_21_061101) do
   end
 
   create_table "votes", force: :cascade do |t|
-    t.integer "start_num"
+    t.integer "star_num"
     t.integer "user_id"
     t.integer "restaurant_id"
     t.datetime "created_at", null: false
