@@ -1,7 +1,15 @@
 <main>
-  <div class="container margin_80">
-
+  <div class="container margin_60_35">
     <div class="isotope-wrapper py-3">
+      <%= form_for @restaurant, url: restaurant_index_path(@restaurant) do |f| %>
+      <div class="field">
+        <%= f.text_area :name, placeholder: "name" %></br>
+        <%= f.text_area :address, placeholder: "address" %></br>
+        <%= f.text_area :phone, placeholder: "phone" %></br>
+        <%= f.text_area :description, placeholder: "description" %></br>
+      </div>
+      <%= f.submit "Thêm", class: "btn btn-primary" %>
+      <% end %>
       <% $count = 0 %>
       <% @all_res.each do |r| %>
       <% if $count < 10 %>
@@ -9,7 +17,6 @@
         <div class="row">
           <div class="col-md-9">
             <div class="company_info">
-              <figure><a href="reviews-page.html"><img src="assets/img/avatar.jpg" alt=""></a></figure>
               <h3><%= r.name %></h3>
               <p>Địa chỉ: <%= r.address %></p>
               <p>Số điện thoại: <%= r.phone %></p>
@@ -18,18 +25,8 @@
           <div class="col-md-3">
             <div class="text-center float-lg-right">
               <span class="rating">
-                <strong><%= r.comments.count %> comments <%= r.vote_num %>/5.0</strong>
-                <% (1..5).each do |i| %>
-                  <% if i <= r.vote_num %>
-                  <i class="fas fa-star"></i>
-                  <% elsif (i - r.vote_num) <1 %>
-                  <i class="fas fa-star-half-alt"></i>
-                  <% else %>
-                  <i class="far fa-star"></i>
-                  <% end %>
-                <% end %>
               </span>
-              <%= link_to  "Xem thêm", restaurant_path(r), class: "btn_1 small" %>
+              <%= link_to  "Xóa", restaurant_path(r),  method: :delete, class: "btn_1 small" %>
             </div>
           </div>
         </div>
