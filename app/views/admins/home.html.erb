@@ -1,0 +1,45 @@
+<main>
+  <div class="container margin_60_35">
+    <div class="isotope-wrapper py-3">
+      <%= form_for @restaurant, url: restaurant_index_path(@restaurant) do |f| %>
+      <div class="field">
+        <%= f.text_area :name, placeholder: "name" %></br>
+        <%= f.text_area :address, placeholder: "address" %></br>
+        <%= f.text_area :phone, placeholder: "phone" %></br>
+        <%= f.text_area :description, placeholder: "description" %></br>
+      </div>
+      <%= f.submit "Thêm", class: "btn btn-primary" %>
+      <% end %>
+      <% $count = 0 %>
+      <% @all_res.each do |r| %>
+      <% if $count < 10 %>
+      <div class="company_listing isotope-item high" style="width: 100%">
+        <div class="row">
+          <div class="col-md-9">
+            <div class="company_info">
+              <h3><%= r.name %></h3>
+              <p>Địa chỉ: <%= r.address %></p>
+              <p>Số điện thoại: <%= r.phone %></p>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="text-center float-lg-right">
+              <span class="rating">
+              </span>
+              <%= link_to  "Xóa", restaurant_path(r),  method: :delete, class: "btn_1 small" %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% $count+=1 %>
+      <% end %>
+      <!-- /company_listing -->
+      <% end %>
+    </div>
+    <!-- /isotope-wrapper -->
+
+    <p class="text-center"><a href="#0" class="btn_1 rounded add_top_15">Xem thêm</a></p>
+
+  </div>
+
+</main>
