@@ -131,7 +131,7 @@ foods=Food.create([
     },
     
   ])
-  comments=Comment.create([
+ Comment.create([
       {
         content:%{ ngon tuyệt đỉnh luôn.ngon dã man.
             },
@@ -157,7 +157,7 @@ foods=Food.create([
         user_id:3
       },
     ])
-  food_images.Food_image([
+  FoodImage.create([
       {
         image:"1.img",
         food_id:1
@@ -184,7 +184,7 @@ foods=Food.create([
       },
       
     ])
-votes.Vote([
+ Vote.create([
     {
       start_num:3,
       user_id:1,
@@ -209,9 +209,9 @@ votes.Vote([
       start_num:3,
       user_id:3,
       restaurant_id:2
-    },
+    }
   ])
-transactions.Transaction([
+Transaction.create([
     {
       price:123.5,
       restaurant_id:1
@@ -222,7 +222,7 @@ transactions.Transaction([
     },
     
   ])
-res_images.Res_image([
+ResImage.create([
     {
       image:"res1.img",
       restaurant_id:1
