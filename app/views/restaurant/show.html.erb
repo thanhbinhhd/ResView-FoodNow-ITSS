@@ -43,13 +43,13 @@
               </div>
 							<div class="modal" id="modalIMG" style="background-color: rgba(0, 0, 0, 0.24);">
 							    <div class="modal-dialog">
-							      <div class="modal-content" style="top: 75px;">							    
+							      <div class="modal-content" style="top: 75px;">
 							        <div class="modal-body">
 										    <%= image_tag f.image, :style => "width: 100%" %>
 							        </div>
 							      </div>
 							    </div>
-							</div>              
+							</div>
               <div class="col-md-10 review_content">
                 <h6><%= f.name %></h6>
                 <h6><i class="fa fa-tag minmaxpriceicon"></i> <%= f.price %> đ</h6>
@@ -79,7 +79,7 @@
                 <span class="rating">
                   <% if r_c.user.votes.find_by(restaurant_id: @res.id) %>
                   <i class="fa fa-star"></i>
-                  <em><%= r_c.user.votes.find_by(restaurant_id: @res.id).star_num %>/5.00</em>
+                  <em><%= r_c.user.votes.find_by(restaurant_id: @res.id).star_num %> / 5</em>
                   <% end %>
                 </span>
                 <em><%= time_ago_in_words(r_c.created_at) %></em>
@@ -94,30 +94,7 @@
       </div>
       <!-- /col -->
       <div class="col-lg-3">
-        <div class="box_general company_info">
-          <div class="row">
-            <h5 style="width: 100%; padding: 10px 15px 0px 10px;border-bottom: 1px solid #eee;margin-bottom: 20px;">Đánh giá của bạn</h5>
-            <hr>
-          </div>
-          <div class="rating_submit">
-						<div class="form-group">
-						<label class="d-block">Đánh giá Sao</label>
-						<span class="rating">
-							<input type="radio" class="rating-input" id="5_star" name="rating-input" value="5 Stars"><label for="5_star" class="rating-star"></label>
-							<input type="radio" class="rating-input" id="4_star" name="rating-input" value="4 Stars"><label for="4_star" class="rating-star"></label>
-							<input type="radio" class="rating-input" id="3_star" name="rating-input" value="3 Stars"><label for="3_star" class="rating-star"></label>
-							<input type="radio" class="rating-input" id="2_star" name="rating-input" value="2 Stars"><label for="2_star" class="rating-star"></label>
-							<input type="radio" class="rating-input" id="1_star" name="rating-input" value="1 Star"><label for="1_star" class="rating-star"></label>
-						</span>
-						</div>
-					</div>
-					<div class="form-group">
-						<label>Bình luận</label>
-						<textarea class="form-control" style="height: 180px;" placeholder="Để lại bình luận của bạn ở đây"></textarea>
-						<br>
-						<a href="confirm.html" class="btn_1">Gửi</a>
-					</div>
-        </div>
+        <%= render "restaurant/layouts/review" %>
       </div>
     </div>
     <!-- /row -->

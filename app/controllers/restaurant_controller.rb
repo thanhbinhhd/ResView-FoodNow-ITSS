@@ -14,30 +14,30 @@ class RestaurantController < ApplicationController
     @res_imgs = @res.res_images.all
     @res_comments = @res.comments.paginate(:page => params[:page], :per_page => 5)
   end
-  
+
   def create
     @restaurant = Restaurant.create(restaurant_params)
     if @restaurant.save
       redirect_to admin_root_path # todo admin root
     end
   end
-  
+
   def destroy
     @restaurant = Restaurant.find_by(id: params[:id])
     @restaurant.destroy!
     redirect_to request.referrer || admin_root_path
   end
-  
+
   def edit
     @restaurant = Restaurant.find_by(id: params[:id])
   end
-  
+
   def update
     @restaurant = Restaurant.find_by(id: params[:id])
     @restaurant.update_attributes(restaurant_params)
   end
-  
-  
+
+
   private
 
   def restaurant_params
