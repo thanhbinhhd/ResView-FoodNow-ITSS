@@ -1,10 +1,60 @@
-</br></br></br></br></br></br></br></br></br></br></br>
-<%= form_for @restaurant, url: restaurant_path(@restaurant), html: {method: :patch} do |f| %>
-      <div class="field">
-        <%= f.text_area :name, placeholder: "name" %></br>
-        <%= f.text_area :address, placeholder: "address" %></br>
-        <%= f.text_area :phone, placeholder: "phone" %></br>
-        <%= f.text_area :description, placeholder: "description" %></br>
+<main>
+  <div class="reviews_summary">
+    <div class="wrapper">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8">
+            <h1><%= @restaurant.name %></h1>
+            <h6 class="text_white" style="margin-bottom:15px">
+              <i class="fa fa-location-arrow"></i>
+              <%= @restaurant.address %>
+            </h6>
+            <h6 class="text_white" style="margin-bottom:15px"><i class="fa fa-phone"></i> 1234567890</h6>
+            <h6 class="text_white" style="margin-bottom:15px"><i class="fa fa-tag minmaxpriceicon"></i> 25.000đ - 50.000đ</h6>
+            <span class="rating"><i class="fa fa-star"></i><em><%= @restaurant.vote_num %>/5.00</em></span>
+          </div>
+          <div class="col-lg-4">
+            <img src="https://images.foody.vn/res/g96/953948/prof/s640x400/foody-upload-api-foody-mobile-avar166-190906143554.jpg" style="width: 100%">
+          </div>
+        </div>
       </div>
-      <%= f.submit "Sửa", class: "btn btn-primary" %>
-<% end %>
+      <!-- /container -->
+    </div>
+  </div>
+  <!-- /reviews_summary -->
+
+  <div class="container margin_60_35">
+    <div class="row">
+      <div class="col-lg-9">
+        <div class="review_card">
+          <div class="row">
+            <h5 style="width: 100%; padding: 10px 15px 0px 10px;border-bottom: 1px solid #eee;margin-bottom: 20px;">Chỉnh sửa</h5>
+            <hr>
+          </div>
+          <div class="row">
+            <%= form_for @restaurant, url: restaurant_path(@restaurant), html: {method: :patch} do |f| %>
+            <div class="field">
+              <p>Tên cửa hàng</p>
+              <%= f.text_area :name, placeholder: "name", class: "form-control" %></br>
+              <p>Địa chỉ</p>
+              <%= f.text_area :address, placeholder: "address", class: "form-control" %></br>
+              <p>Số điện thoại</p>
+              <%= f.text_area :phone, placeholder: "phone", class: "form-control" %></br>
+              <p>Thông tin</p>
+              <%= f.text_area :description, placeholder: "description", class: "form-control" %></br>
+            </div>
+            <%= f.submit "Xong", class: "btn btn-primary",style: "margin-bottom: 10px;" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <!-- /col -->
+      <div class="col-lg-3">
+      </div>
+    </div>
+    <!-- /row -->
+  </div>
+  <!-- /container -->
+
+</main>
+

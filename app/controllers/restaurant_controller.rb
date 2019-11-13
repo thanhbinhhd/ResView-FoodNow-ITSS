@@ -1,4 +1,5 @@
 class RestaurantController < ApplicationController
+  before_action :check_admin, only: %i(create destroy edit update)
   def index
     if params[:name]
       @all_res = Restaurant.where('name LIKE ?', "%#{params[:name]}%")
@@ -18,7 +19,7 @@ class RestaurantController < ApplicationController
   def create
     @restaurant = Restaurant.create(restaurant_params)
     if @restaurant.save
-      redirect_to admin_root_path # todo admin root
+      redirect_to admin_root_path 
     end
   end
 
@@ -37,10 +38,15 @@ class RestaurantController < ApplicationController
     @restaurant.update_attributes(restaurant_params)
   end
 
-
   private
 
   def restaurant_params
     params.require(:restaurant).permit(:name, :address, :phone, :description)
+  end
+  
+  def check_admin
+    if !admin_signed_in? 
+      redirect_to new_admin_session_path
+    end
   end
 end
