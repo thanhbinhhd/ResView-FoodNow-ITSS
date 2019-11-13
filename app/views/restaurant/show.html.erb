@@ -84,7 +84,17 @@
                 </span>
                 <em><%= time_ago_in_words(r_c.created_at) %></em>
               </div>
-              <p><%= r_c.content %></p>
+              <div class="row">
+                <p><%= r_c.content %></p>
+                <% if r_c.user == current_user %>
+                <div class="ml-auto">
+                  <%= button_to r_c, method: :delete,
+                    class: "btn btn-danger", data: { confirm: "Bạn có chắc chắn muốn xoá?" } do%>
+                  <i class="fas fa-trash-alt"></i>
+                  <% end %>
+                </div>
+                <% end %>
+              </div>
             </div>
           </div>
           <% end %>

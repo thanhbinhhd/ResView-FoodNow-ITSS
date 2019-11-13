@@ -8,4 +8,10 @@ class CommentsController < ApplicationController
     @vote.save!
     redirect_to request.referrer || root_path
   end
+
+  def destroy
+    @comment = Comment.find_by(id: params[:id])
+    @comment.destroy!
+    redirect_to request.referrer || root_path
+  end
 end

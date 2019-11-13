@@ -13,13 +13,13 @@ class RestaurantController < ApplicationController
     @res = Restaurant.find_by(id: params[:id])
     @foods = @res.foods.all
     @res_imgs = @res.res_images.all
-    @res_comments = @res.comments.paginate(:page => params[:page], :per_page => 5)
+    @res_comments = @res.comments.recent.paginate(:page => params[:page], :per_page => 5)
   end
 
   def create
     @restaurant = Restaurant.create(restaurant_params)
     if @restaurant.save
-      redirect_to admin_root_path 
+      redirect_to admin_root_path
     end
   end
 
@@ -43,9 +43,9 @@ class RestaurantController < ApplicationController
   def restaurant_params
     params.require(:restaurant).permit(:name, :address, :phone, :description)
   end
-  
+
   def check_admin
-    if !admin_signed_in? 
+    if !admin_signed_in?
       redirect_to new_admin_session_path
     end
   end
