@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   resources :restaurant
   resources :comments
   get '/admins' => "admins#home", :as => :admin_root
+  get '/staticpages/about', to: "static_pages#about", as: :about
+  get '/staticpages/contact', to: "static_pages#contact", as: :contact
 end
