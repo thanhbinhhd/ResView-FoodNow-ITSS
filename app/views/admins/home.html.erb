@@ -1,15 +1,48 @@
+
 <main>
-  <div class="container margin_60_35">
-    <div class="isotope-wrapper py-3">
-      <%= form_for @restaurant, url: restaurant_index_path(@restaurant) do |f| %>
-      <div class="field">
-        <%= f.text_area :name, placeholder: "name" %></br>
-        <%= f.text_area :address, placeholder: "address" %></br>
-        <%= f.text_area :phone, placeholder: "phone" %></br>
-        <%= f.text_area :description, placeholder: "description" %></br>
+  <div class="container margin_80">
+  <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="margin-top: 15px;margin-left: 10px;">
+  Thêm cửa hàng
+</button>
+
+<!-- Modal -->
+<%= form_for @restaurant, url: restaurant_index_path(@restaurant) do |f| %>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" style="top: 40px;">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Thêm cửa hàng</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        <div class="modal-body">
+          <div class="field">
+            <p>Tên cửa hàng</p>
+            <%= f.text_area :name, placeholder: "name", class: "form-control" %></br>
+            <p>Địa chỉ</p>
+            <%= f.text_area :address, placeholder: "address", class: "form-control" %></br>
+            <p>Số điện thoại</p>
+            <%= f.text_area :phone, placeholder: "phone", class: "form-control" %></br>
+            <p>Thông tin</p>
+            <%= f.text_area :description, placeholder: "description", class: "form-control" %></br>
+          </div>
+        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <%= f.submit "Thêm", class: "btn btn-primary" %>
+        <% end %>
       </div>
-      <%= f.submit "Thêm", class: "btn btn-primary" %>
-      <% end %>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+    <div class="isotope-wrapper py-3">
       <% $count = 0 %>
       <% @all_res.each do |r| %>
       <% if $count < 10 %>
@@ -17,6 +50,12 @@
         <div class="row">
           <div class="col-md-9">
             <div class="company_info">
+              <figure>
+                <a href="<%= restaurant_path(r) %>">
+                  <!-- <img src="img/brands/1.png" alt=""> -->
+                  <img src="<%= r.res_images.first() ? r.res_images.first().image : "" %>" alt="">
+                </a>
+              </figure>
               <h3><%= r.name %></h3>
               <p>Địa chỉ: <%= r.address %></p>
               <p>Số điện thoại: <%= r.phone %></p>
@@ -24,9 +63,9 @@
           </div>
           <div class="col-md-3">
             <div class="text-center float-lg-right">
-              <span class="rating">
-              </span>
-              <%= link_to  "Xóa", restaurant_path(r),  method: :delete, class: "btn_1 small" %>
+              <%= link_to  "Xem thêm", restaurant_path(r), class: "btn btn-sm  btn-primary small" %>
+               <%= link_to  "Xóa", restaurant_path(r),  method: :delete, class: "btn btn-sm small btn-danger" %>
+                <%= link_to  "Chỉnh sửa", edit_restaurant_path(r), class: "btn btn-sm small btn-warning" %>
             </div>
           </div>
         </div>

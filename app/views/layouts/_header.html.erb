@@ -8,6 +8,8 @@
   <ul id="top_menu">
     <% if user_signed_in? %>
     <li><%= link_to "Đăng xuất", destroy_user_session_path, class: "btn_top", method: :delete %></li>
+    <% elsif admin_signed_in? %>
+    <li><%= link_to "Admin Đăng xuất", destroy_admin_session_path, class: "btn_top btn-warning", method: :delete %></li>
     <% else %>
     <li><%= link_to "Đăng nhập", new_user_session_path, class: "btn_top" %></li>
     <% end %>
