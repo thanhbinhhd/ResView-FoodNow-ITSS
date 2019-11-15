@@ -30,8 +30,14 @@
         <%= link_to "Trang chủ", root_path %>
       </span></li>
       <li><span>
+        <%= link_to "Giới thiệu", about_path %>
+      </span></li>
+      <li><span>
+        <%= link_to "Liên hệ", contact_path %>
+      </span></li>
+      <li><span>
         <%= link_to "Nhà hàng", restaurant_index_path %>
-      </span></li>      
+      </span></li>
       <% if user_signed_in? %>
       <li><span>
         <%= link_to "Trang cá nhân", edit_user_registration_path %>

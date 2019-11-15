@@ -48,3 +48,9 @@ end
     res_images = restaurant.res_images.create(image: "https://images.foody.vn/res/g96/953948/prof/s640x400/foody-upload-api-foody-mobile-avar166-190906143554.jpg")
   end
 end
+
+admin = Admin.new
+admin.email = "admin@admin.com"
+admin.password = '123456'
+admin.password_confirmation = "123456"
+admin.save!
