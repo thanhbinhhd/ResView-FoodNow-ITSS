@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Resview</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'admins/application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'admins/application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body class="skin-blue">
+    <div class="wrapper">
+      <%= render "admins/layouts/header" %>
+      <%= render "admins/layouts/aside" %>
+      <div class="content-wrapper">
+        <section class="content">
+          <%= yield %>
+        </section>
+      </div>
+      <%= render "admins/layouts/footer" %>
+    </div>
+  </body>
+</html>

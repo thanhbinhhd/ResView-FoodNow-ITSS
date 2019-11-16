@@ -1,0 +1,53 @@
+<h2>Danh sách người dùng</h2>
+<div class="row">
+  <div class="col-xs-12">
+    <div class="box">
+      <!-- /.box-header -->
+      <div class="box-body">
+        <table id="datatable" class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Username</th>
+              <th>Email</th>
+              <th>Address</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @users.each do |u| %>
+            <tr>
+              <td><%= u.id %></td>
+              <td><%= u.username %></td>
+              <td><%= u.email %></td>
+              <td><%= u.address %></td>
+              <td class="btn-group">
+                <button type="button" class="btn btn-primary">View</button>
+                <button type="button" class="btn btn-success">Update</button>
+                <button type="button" class="btn btn-danger">Destroy</button>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+          <tfoot>
+            <tr>
+              <th>Rendering engine</th>
+              <th>Browser</th>
+              <th>Platform(s)</th>
+              <th>Engine version</th>
+              <th>CSS grade</th>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+      <!-- /.box-body -->
+    </div>
+    <!-- /.box -->
+  </div>
+  <!-- /.col -->
+</div>
+<script type="text/javascript">
+  $(function () {
+    $("#datatable").DataTable();
+  });
+</script>

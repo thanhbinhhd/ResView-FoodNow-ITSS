@@ -13,8 +13,11 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
-//= require jquery3
-//= require popper
-//= require bootstrap-sprockets
-//= require js/functions
-//= require js/common_scripts
+//= require jquery
+//= require jquery_ujs
+//= require admin-lte/bootstrap/js/bootstrap
+//= require admin-lte/dist/js/app.js
+//= require admin-lte/plugins/datatables/jquery.dataTables.min.js
+//= require admin-lte/plugins/datatables/dataTables.bootstrap.min.js
+//= require admin-lte/plugins/select2/select2.full.min.js
+//= require admins/script.js
