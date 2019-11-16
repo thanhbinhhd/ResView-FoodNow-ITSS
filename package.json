@@ -1,7 +1,9 @@
 {
   "name": "resview",
   "private": true,
-  "dependencies": {},
+  "dependencies": {
+    "admin-lte": "2.3.5"
+  },
   "devDependencies": {
     "webpack": "^4.41.2",
     "webpack-dev-server": "^3.9.0"
