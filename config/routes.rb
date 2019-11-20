@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :admins, path: 'admins'
   root 'static_pages#home'
 
-  devise_for :users, :controllers => { :registrations => :registrations }
+  devise_for :users, :controllers => { :registrations => :registrations, :omniauth_callbacks => "users/omniauth_callbacks" }
   resources :restaurant
   resources :comments
   get '/admins' => "admins#home", :as => :admin_root
@@ -16,4 +16,5 @@ Rails.application.routes.draw do
     resources :transactions, only: [:new, :create]
     resources :foods
   end
+
 end
