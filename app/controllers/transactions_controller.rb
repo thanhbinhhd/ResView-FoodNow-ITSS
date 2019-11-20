@@ -9,6 +9,6 @@ class TransactionsController < ApplicationController
     @tran = Restaurant.find_by(id: params[:transaction][:restaurant_id]).transactions.build
     @tran.price = params[:transaction][:price].to_f
     @tran.save!
-    # redirect_to admin_transaction_list_path
+    redirect_to admin_transaction_list_path
   end
 end

@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   scope '/admins' do
     get '/users', to: "admins#users", as: :admin_user_list
     get '/transactions', to: "admins#transactions", as: :admin_transaction_list
+    get '/foods', to: "admins#foods", as: :admin_food_list
     resources :transactions, only: [:new, :create]
+    resources :foods
   end
 end

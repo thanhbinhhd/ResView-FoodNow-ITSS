@@ -25,9 +25,9 @@
         </a>
       </li>
       <li>
-        <a href="pages/calendar.html">
-          <i class="fas fa-utensils"></i> <span>Food</span>
-        </a>
+        <%= link_to admin_food_list_path do %>
+        <i class="fas fa-utensils"></i> <span>Food</span>
+        <% end %>
       </li>
       <li>
         <%= link_to admin_transaction_list_path do %>
