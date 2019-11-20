@@ -1,11 +1,10 @@
 
 <main>
-  <div class="container margin_80">
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="margin-top: 15px;margin-left: 10px;">
-      Thêm cửa hàng
-    </button>
-
+  <h2>Restaurant lists</h2>
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="margin-top: 15px;margin-bottom: 10px;">
+    Thêm cửa hàng
+  </button>
     <!-- Modal -->
     <%= form_for @restaurant, url: restaurant_index_path(@restaurant) do |f| %>
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -36,49 +35,66 @@
           </div>
         </div>
       </div>
-    </div>
-
-
-
-
-
-    <div class="isotope-wrapper py-3">
-      <% $count = 0 %>
-      <% @all_res.each do |r| %>
-      <% if $count < 10 %>
-      <div class="company_listing isotope-item high" style="width: 100%">
-        <div class="row">
-          <div class="col-md-9">
-            <div class="company_info">
-              <figure>
-                <a href="<%= restaurant_path(r) %>">
-                  <!-- <img src="img/brands/1.png" alt=""> -->
-                  <img src="<%= r.res_images.first() ? r.res_images.first().image : "" %>" alt="">
-                </a>
-              </figure>
-              <h3><%= r.name %></h3>
-              <p>Địa chỉ: <%= r.address %></p>
-              <p>Số điện thoại: <%= r.phone %></p>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="text-center float-lg-right">
-              <%= link_to  "Xem thêm", restaurant_path(r), class: "btn btn-sm  btn-primary small" %>
-              <%= link_to  "Xóa", restaurant_path(r),  method: :delete, class: "btn btn-sm small btn-danger" %>
-              <%= link_to  "Chỉnh sửa", edit_restaurant_path(r), class: "btn btn-sm small btn-warning" %>
-            </div>
-          </div>
+    </div>  
+    
+    
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box">
+        <!-- /.box-header -->
+        <div class="box-body">
+          <table id="datatable" class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th>Ảnh</th>
+                <th>Tên nhà hàng</th>
+                <th>Số điện thoại</th>
+                <th>Address</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+            <% $count = 0 %>
+            <% @all_res.each do |r| %>
+            <% if $count < 10 %>
+              <tr>
+                <td>
+                    <figure>
+                      <a href="<%= restaurant_path(r) %>">
+                        <!-- <img src="img/brands/1.png" alt=""> -->
+                        <img src="<%= r.res_images.first() ? r.res_images.first().image : "" %>" alt="" style="width: 150px">
+                      </a>
+                    </figure>
+                </td>
+                <td><%= r.name %></td>
+                <td><%= r.phone %></td>
+                <td><%= r.address %></td>
+                <td class="btn-group">
+                  <div class="text-left float-lg-right">
+                    <%= link_to  "Xem thêm", restaurant_path(r), class: "btn btn-sm  btn-primary small" %>
+                  </div>
+                  <div class="text-left float-lg-right">
+                    <%= link_to  "Xóa", restaurant_path(r),  method: :delete, class: "btn btn-sm small btn-danger" %>
+                  </div>
+                  <div class="text-left float-lg-right">
+                    <%= link_to  "Chỉnh sửa", edit_restaurant_path(r), class: "btn btn-sm small btn-warning" %>
+                  </div>
+                </td>
+              </tr>
+            <% $count+=1 %>
+            <% end %>
+            <% end %>
+            </tbody>
+          </table>
         </div>
+        <!-- /.box-body -->
       </div>
-      <% $count+=1 %>
-      <% end %>
-      <!-- /company_listing -->
-      <% end %>
+      <!-- /.box -->
     </div>
-    <!-- /isotope-wrapper -->
-
-    <p class="text-center"><a href="#0" class="btn_1 rounded add_top_15">Xem thêm</a></p>
-
   </div>
-
+<script type="text/javascript">
+  $(function () {
+    $("#datatable").DataTable();
+  });
+</script>  
 </main>
