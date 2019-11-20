@@ -22,13 +22,6 @@ end
   restaurant.address = "Thanh Xuan, Ha Noi"
   restaurant.phone = 1234567890
   restaurant.description = "description of restaurant " + r.to_s
-  10.times do |f|
-    food = restaurant.foods.build
-    food.name = "Food " + f.to_s
-    food.price = 100000
-    food.image = "https://images.foody.vn/res/g96/953948/s120x120/3b17a9d2-d196-4e37-867f-6f6639ea4f86.jpg"
-    food.save!
-  end
   10.times do |v|
     vote = User.find(rand(1..20)).votes.build
     vote.star_num = rand(1..5)

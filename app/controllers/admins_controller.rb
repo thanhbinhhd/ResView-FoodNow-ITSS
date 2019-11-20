@@ -16,6 +16,14 @@ class AdminsController < ApplicationController
     @transactions = Transaction.all
     render "admins/transaction_list"
   end
+
+  def foods
+    @restaurants = Restaurant.all
+    @foods = Food.all
+    @food = Food.new
+    render "admins/food_list"
+  end
+
   private
 
   def check_login

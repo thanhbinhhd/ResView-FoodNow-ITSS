@@ -8,6 +8,9 @@ gem 'font-awesome-sass', '~> 5.11.2'
 gem "devise", "~> 4.1"
 gem 'will_paginate', '>= 3.0'
 
+gem 'carrierwave'
+gem 'mini_magick', '~> 4.8'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
 # Use Puma as the app server
