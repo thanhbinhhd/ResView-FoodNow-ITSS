@@ -2,7 +2,7 @@ class RestaurantController < ApplicationController
   before_action :check_admin, only: %i(create destroy edit update)
   def index
     if params[:name]
-      @all_res = Restaurant.where('name LIKE ?', "%#{params[:name]}%")
+      @all_res = Restaurant.where('name LIKE ? or address LIKE ?', "%#{params[:name]}%", "%#{params[:name]}%")
     else
       @all_res = Restaurant.all.asc
     end
