@@ -72,17 +72,46 @@
 			<hr>
 			<%= link_to "Xem tất cả", restaurant_index_path %>
 		</div>
+		<!--<div class="row justify-content-center">-->
+		<!--	<% @recent_res.each do |r| %>-->
+		<!--	<div class="col-lg-4 col-sm-6">-->
+		<!--		<%= link_to restaurant_path(r), class: "grid_item" do %>-->
+		<!--			<figure>-->
+						<!-- <img src="assets/img/box_cat_home_1.jpg" alt=""> -->
+		<!--				<img src="<%= r.res_images.first().image %>" alt="">-->
+
+		<!--				<div class="info">-->
+		<!--					<small><i class="fas fa-comment"></i> <%= r.comments.count %> Reviews</small>-->
+		<!--					<span class="rating">-->
+		<!--						<% (1..5).each do |i| %>-->
+		<!--							<% if i <= r.vote_num %>-->
+		<!--							<i class="fas fa-star"></i>-->
+		<!--							<% elsif (i - r.vote_num) <1 %>-->
+		<!--							<i class="fas fa-star-half-alt"></i>-->
+		<!--							<% else %>-->
+		<!--							<i class="far fa-star"></i>-->
+		<!--							<% end %>-->
+		<!--						<% end %>-->
+		<!--						<span class="text-white"><%= r.vote_num %>/5.0</span>-->
+		<!--					</span>-->
+		<!--					<h3><%= r.name %></h3>-->
+		<!--				</div>-->
+		<!--			</figure>-->
+		<!--		<% end %>-->
+		<!--	</div>-->
+		<!--	<% end %>-->
+			<!-- /grid_item -->
+		<!--</div>-->
 		<div class="row justify-content-center">
 			<% @recent_res.each do |r| %>
-			<div class="col-lg-4 col-sm-6">
-				<%= link_to restaurant_path(r), class: "grid_item" do %>
-					<figure>
-						<!-- <img src="assets/img/box_cat_home_1.jpg" alt=""> -->
-						<img src="<%= r.res_images.first().image %>" alt="">
-
-						<div class="info">
-							<small><i class="fas fa-comment"></i> <%= r.comments.count %> Reviews</small>
-							<span class="rating">
+			<div class="col-lg-4 col-md-6">
+                <div class="post-module">
+                  <div class="thumbnail">
+                      <img src="<%= r.res_images.first().image %>" alt="">
+                  </div>
+                  <div class="post-content">
+                    <div class="category">
+						<span class="rating">
 								<% (1..5).each do |i| %>
 									<% if i <= r.vote_num %>
 									<i class="fas fa-star"></i>
@@ -93,16 +122,17 @@
 									<% end %>
 								<% end %>
 								<span class="text-white"><%= r.vote_num %>/5.0</span>
-							</span>
-							<h3><%= r.name %></h3>
-						</div>
-					</figure>
-				<% end %>
-			</div>
-			<% end %>
-			<!-- /grid_item -->
+						</span>
+                    </div>
+                    <h1 class="title"><a href="" style="color: #0f6eaa"><%= r.name %></a></h1>
+                    <h2 class="sub_title"><a href="" style="color: #e74c3c">Xem tiếp ...</a></h2>
+                    <p class="description">Món ăn siêu ngon siêu cay khổng lồ</p>
+                    <div class="post-meta"><small><i class="fas fa-comment"></i> <%= r.comments.count %> Reviews</small></div>
+                  </div>
+                </div>  
+            </div>
+            <% end %>
 		</div>
-
 		<div id="reccomended" class="owl-carousel owl-theme">
 			<div class="item">
 				<div class="review_listing">
