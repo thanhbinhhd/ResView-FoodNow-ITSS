@@ -20,4 +20,5 @@
 //= require admin-lte/plugins/datatables/jquery.dataTables.min.js
 //= require admin-lte/plugins/datatables/dataTables.bootstrap.min.js
 //= require admin-lte/plugins/select2/select2.full.min.js
+//= require admin-lte/plugins/chartjs/Chart.min.js
 //= require admins/script.js

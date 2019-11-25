@@ -42,7 +42,7 @@
                 <a href="#" class="btn btn-default btn-flat">Profile</a>
               </div>
               <div class="pull-right">
-                <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                <%= link_to "Đăng xuất", destroy_admin_session_path, class: "btn btn-default btn-flat", method: :delete %>
               </div>
             </li>
           </ul>

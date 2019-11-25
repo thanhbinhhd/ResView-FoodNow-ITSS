@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(version: 2019_11_20_141805) do
     t.string "phone"
     t.text "description"
     t.float "vote_num"
+    t.datetime "deadline"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

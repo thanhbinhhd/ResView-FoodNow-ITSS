@@ -18,6 +18,7 @@ class RestaurantController < ApplicationController
 
   def create
     @restaurant = Restaurant.create(restaurant_params)
+    @restaurant.deadline = Time.now
     if @restaurant.save
       redirect_to admin_root_path
     end

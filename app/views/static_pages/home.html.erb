@@ -37,8 +37,7 @@
 			<div class="col-lg-4 col-sm-6">
 				<%= link_to restaurant_path(r), class: "grid_item" do %>
 				<figure>
-					<!-- <img src="assets/img/box_cat_home_1.jpg" alt=""> -->
-					<img src="<%= r.res_images.first().image %>" alt="">
+					<%= image_tag r.res_images.first().image %>
 
 					<div class="info">
 						<small><i class="fas fa-comment"></i> <%= r.comments.count %> Reviews</small>
@@ -67,95 +66,42 @@
 	<div class="container margin_60">
 		<div class="main_title_3">
 			<h2>Latest Reviews</h2>
-			<p>Cum doctus civibus efficiantur in imperdiet deterruisset.</p>
 			<a href="reviews-page.html">View all</a>
 		</div>
-		
+
 		<div id="reccomended" class="owl-carousel owl-theme">
+			<% @recent_res.each do |r| %>
 			<div class="item">
 				<div class="review_listing">
 					<div class="clearfix">
-						<figure><img src="https://i.imgur.com/usFXtM1.png" alt=""></figure>
-						<span class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><em>5.00/5.00</em></span>
-						<small>Shops</small>
+						<figure><%= image_tag r.res_images.first().image %></figure>
+						<span class="rating">
+						<% (1..5).each do |i| %>
+						<% if i <= r.vote_num %>
+						<i class="fas fa-star"></i>
+						<% elsif (i - r.vote_num) <1 %>
+							<i class="fas fa-star-half-alt"></i>
+							<% else %>
+							<i class="far fa-star"></i>
+							<% end %>
+							<% end %>
+							<em><%= r.vote_num %>/5.0</em>
+						</span>
 					</div>
-					<h3><strong>Jhon Doe</strong> reviewed <a href="reviews-page.html">Fnac</a></h3>
-					<h4>"Avesome Experience"</h4>
-					<p>Et nec tantas accusamus salutatus, sit commodo veritus te</p>
+					<h4><%= r.name %></h4>
+					<p>
+						<%= r.description %>
+					</p>
 					<ul class="clearfix">
-						<li><small>Published: 26.08.2018</small></li>
-						<li><a href="reviews-page.html" class="btn_1 small">Read review</a></li>
+						<li><small>Published: <%= time_ago_in_words(r.created_at) %></small></li>
+						<li>
+							<%= link_to "Read more", restaurant_path(r), class: "btn_1 small" %>
+
+						</li>
 					</ul>
 				</div>
 			</div>
-			
-			<div class="item">
-				<div class="review_listing">
-					<div class="clearfix">
-						<figure><img src="https://i.imgur.com/usFXtM1.png" alt=""></figure>
-						<span class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><em>5.00/5.00</em></span>
-						<small>Shops</small>
-					</div>
-					<h3><strong>Marika</strong> reviewed <a href="reviews-page.html">Fnac</a></h3>
-					<h4>"Great products"</h4>
-					<p>Et nec tantas accusamus salutatus, sit commodo veritus te</p>
-					<ul class="clearfix">
-						<li><small>Published: 26.08.2018</small></li>
-						<li><a href="reviews-page.html" class="btn_1 small">Read review</a></li>
-					</ul>
-				</div>
-			</div>
-			
-			<div class="item">
-				<div class="review_listing">
-					<div class="clearfix">
-						<figure><img src="https://i.imgur.com/usFXtM1.png" alt=""></figure>
-						<span class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><em>5.00/5.00</em></span>
-						<small>Shops</small>
-					</div>
-					<h3><strong>Lukas Lee</strong> reviewed <a href="reviews-page.html">Fnac</a></h3>
-					<h4>"Excellent Support"</h4>
-					<p>Et nec tantas accusamus salutatus, sit commodo veritus te</p>
-					<ul class="clearfix">
-						<li><small>Published: 26.08.2018</small></li>
-						<li><a href="reviews-page.html" class="btn_1 small">Read review</a></li>
-					</ul>
-				</div>
-			</div>
-			
-			<div class="item">
-				<div class="review_listing">
-					<div class="clearfix">
-						<figure><img src="https://i.imgur.com/usFXtM1.png" alt=""></figure>
-						<span class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><em>5.00/5.00</em></span>
-						<small>Shops</small>
-					</div>
-					<h3><strong>Margaret</strong> reviewed <a href="reviews-page.html">Fnac</a></h3>
-					<h4>"Perfect"</h4>
-					<p>Et nec tantas accusamus salutatus, sit commodo veritus te</p>
-					<ul class="clearfix">
-						<li><small>Published: 26.08.2018</small></li>
-						<li><a href="reviews-page.html" class="btn_1 small">Read review</a></li>
-					</ul>
-				</div>
-			</div>
-			
-			<div class="item">
-				<div class="review_listing">
-					<div class="clearfix">
-						<figure><img src="https://i.imgur.com/usFXtM1.png" alt=""></figure>
-						<span class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><em>5.00/5.00</em></span>
-						<small>Shops</small>
-					</div>
-					<h3><strong>Mark Twain</strong> reviewed <a href="reviews-page.html">Fnac</a></h3>
-					<h4>"Shipping Very Fast"</h4>
-					<p>Et nec tantas accusamus salutatus, sit commodo veritus te</p>
-					<ul class="clearfix">
-						<li><small>Published: 26.08.2018</small></li>
-						<li><a href="#0" class="btn_1 small">Read review</a></li>
-					</ul>
-				</div>
-			</div>
+			<% end %>
 
 		</div>
 		<!-- /carousel -->

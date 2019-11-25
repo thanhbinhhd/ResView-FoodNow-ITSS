@@ -6,7 +6,7 @@ class CreateRestaurants < ActiveRecord::Migration[5.2]
       t.string :phone
       t.text :description
       t.float :vote_num
-
+      t.datetime :deadline
       t.timestamps
     end
   end
