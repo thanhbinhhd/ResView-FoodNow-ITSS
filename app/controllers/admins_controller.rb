@@ -2,9 +2,15 @@ class AdminsController < ApplicationController
   layout 'admin_application'
 
   before_action :check_login, only: [:home]
-  def home
+
+  def dashboards
+    render "admins/dashboard"
+  end
+
+  def restaurants
       @all_res = Restaurant.all.asc
       @restaurant = Restaurant.new
+      render "admins/restaurant_list"
   end
 
   def users

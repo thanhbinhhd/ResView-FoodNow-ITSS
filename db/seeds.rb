@@ -22,6 +22,7 @@ end
   restaurant.address = "Thanh Xuan, Ha Noi"
   restaurant.phone = 1234567890
   restaurant.description = "description of restaurant " + r.to_s
+  restaurant.deadline = Time.now + rand(4).months
   10.times do |v|
     vote = User.find(rand(1..20)).votes.build
     vote.star_num = rand(1..5)
