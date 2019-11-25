@@ -1,215 +1,158 @@
-<section class="hero_single version_1">
-	<div class="wrapper">
-		<div class="container">
-			<h3>Mọi thứ ở đây đều thật tuyệt vời!</h3>
-			<p>Tìm kiếm nhà hàng mà bạn mong muốn</p>
-			<div class="row justify-content-center">
-				<div class="col-lg-9">
-					<form method="get" action="<%= restaurant_index_path %>">
-						<div class="row no-gutters custom-search-input-2">
-							<div class="col-lg-9">
-								<div class="form-group">
-									<input name="name" class="form-control" type="text" placeholder="Bạn đang muốn tìm ..." >
-									<i class="fas fa-search"></i>
+<main>
+	<section class="hero_single version_1">
+		<div class="wrapper">
+			<div class="container">
+				<h3>Mọi thứ ở đây đều thật tuyệt vời!</h3>
+				<p>Tìm kiếm nhà hàng mà bạn mong muốn</p>
+				<div class="row justify-content-center">
+					<div class="col-lg-9">
+						<form method="get" action="<%= restaurant_index_path %>">
+							<div class="row no-gutters custom-search-input-2">
+								<div class="col-lg-9">
+									<div class="form-group">
+										<input name="name" class="form-control" type="text" placeholder="Bạn đang muốn tìm ..." >
+										<i class="fas fa-search"></i>
+									</div>
+								</div>
+								<div class="col-lg-3">
+									<input type="submit" value="Tìm kiếm">
 								</div>
 							</div>
-							<div class="col-lg-3">
-								<input type="submit" value="Tìm kiếm">
-							</div>
-						</div>
-						<!-- /row -->
-					</form>
+							<!-- /row -->
+						</form>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-</section>
+	</section>
 
-<div class="container margin_60_35">
-	<div class="main_title_3">
-		<h2>Nhà hàng được đánh giá cao nhất</h2>
-		<hr>
-		<%= link_to "Xem tất cả", restaurant_index_path %>
-	</div>
-	<div class="row justify-content-center">
-		<% @best_res.each do |r| %>
-		<div class="col-lg-4 col-sm-6">
-			<%= link_to restaurant_path(r), class: "grid_item" do %>
+	<div class="container margin_60_35">
+		<div class="main_title_3">
+			<h2>Nhà hàng được đánh giá cao nhất</h2>
+			<hr>
+			<%= link_to "Xem tất cả", restaurant_index_path %>
+		</div>
+		<div class="row justify-content-center">
+			<% @best_res.each do |r| %>
+			<div class="col-lg-4 col-sm-6">
+				<%= link_to restaurant_path(r), class: "grid_item" do %>
 				<figure>
 					<!-- <img src="assets/img/box_cat_home_1.jpg" alt=""> -->
-          			<img src="<%= r.res_images.first().image %>" alt="">
+					<img src="<%= r.res_images.first().image %>" alt="">
 
 					<div class="info">
 						<small><i class="fas fa-comment"></i> <%= r.comments.count %> Reviews</small>
 						<span class="rating">
 							<% (1..5).each do |i| %>
-								<% if i <= r.vote_num %>
-								<i class="fas fa-star"></i>
-								<% elsif (i - r.vote_num) <1 %>
+							<% if i <= r.vote_num %>
+							<i class="fas fa-star"></i>
+							<% elsif (i - r.vote_num) <1 %>
 								<i class="fas fa-star-half-alt"></i>
 								<% else %>
 								<i class="far fa-star"></i>
 								<% end %>
-							<% end %>
-							<span class="text-white"><%= r.vote_num %>/5.0</span>
-						</span>
-						<h3><%= r.name %></h3>
-					</div>
-				</figure>
-			<% end %>
-		</div>
-		<% end %>
-		<!-- /grid_item -->
-	</div>
-	<!-- /row -->
-</div>
-<!-- /container -->
-
-<div class="bg_color_1">
-	<div class="container margin_60">
-		<div class="main_title_3">
-			<h2>Review mới nhất</h2>
-			<hr>
-			<%= link_to "Xem tất cả", restaurant_index_path %>
-		</div>
-		<!--<div class="row justify-content-center">-->
-		<!--	<% @recent_res.each do |r| %>-->
-		<!--	<div class="col-lg-4 col-sm-6">-->
-		<!--		<%= link_to restaurant_path(r), class: "grid_item" do %>-->
-		<!--			<figure>-->
-						<!-- <img src="assets/img/box_cat_home_1.jpg" alt=""> -->
-		<!--				<img src="<%= r.res_images.first().image %>" alt="">-->
-
-		<!--				<div class="info">-->
-		<!--					<small><i class="fas fa-comment"></i> <%= r.comments.count %> Reviews</small>-->
-		<!--					<span class="rating">-->
-		<!--						<% (1..5).each do |i| %>-->
-		<!--							<% if i <= r.vote_num %>-->
-		<!--							<i class="fas fa-star"></i>-->
-		<!--							<% elsif (i - r.vote_num) <1 %>-->
-		<!--							<i class="fas fa-star-half-alt"></i>-->
-		<!--							<% else %>-->
-		<!--							<i class="far fa-star"></i>-->
-		<!--							<% end %>-->
-		<!--						<% end %>-->
-		<!--						<span class="text-white"><%= r.vote_num %>/5.0</span>-->
-		<!--					</span>-->
-		<!--					<h3><%= r.name %></h3>-->
-		<!--				</div>-->
-		<!--			</figure>-->
-		<!--		<% end %>-->
-		<!--	</div>-->
-		<!--	<% end %>-->
-			<!-- /grid_item -->
-		<!--</div>-->
-		<div class="row justify-content-center">
-			<% @recent_res.each do |r| %>
-			<div class="col-lg-4 col-md-6">
-                <div class="post-module">
-                  <div class="thumbnail">
-                      <img src="<%= r.res_images.first().image %>" alt="">
-                  </div>
-                  <div class="post-content">
-                    <div class="category">
-						<span class="rating">
-								<% (1..5).each do |i| %>
-									<% if i <= r.vote_num %>
-									<i class="fas fa-star"></i>
-									<% elsif (i - r.vote_num) <1 %>
-									<i class="fas fa-star-half-alt"></i>
-									<% else %>
-									<i class="far fa-star"></i>
-									<% end %>
 								<% end %>
 								<span class="text-white"><%= r.vote_num %>/5.0</span>
-						</span>
-                    </div>
-                    <h1 class="title"><a href="" style="color: #0f6eaa"><%= r.name %></a></h1>
-                    <h2 class="sub_title"><a href="" style="color: #e74c3c">Xem tiếp ...</a></h2>
-                    <p class="description">Món ăn siêu ngon siêu cay khổng lồ</p>
-                    <div class="post-meta"><small><i class="fas fa-comment"></i> <%= r.comments.count %> Reviews</small></div>
-                  </div>
-                </div>  
-            </div>
-            <% end %>
+							</span>
+							<h3><%= r.name %></h3>
+						</div>
+					</figure>
+					<% end %>
+				</div>
+				<% end %>
+				<!-- /grid_item -->
+			</div>
+	</div>
+	<div class="bg_color_1">
+	<div class="container margin_60">
+		<div class="main_title_3">
+			<h2>Latest Reviews</h2>
+			<p>Cum doctus civibus efficiantur in imperdiet deterruisset.</p>
+			<a href="reviews-page.html">View all</a>
 		</div>
+		
 		<div id="reccomended" class="owl-carousel owl-theme">
 			<div class="item">
 				<div class="review_listing">
 					<div class="clearfix">
-						<figure><img src="assets/img/avatar.jpg" alt=""></figure>
-						<span class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half"></i><em>4.50/5.00</em></span>
+						<figure><img src="https://i.imgur.com/usFXtM1.png" alt=""></figure>
+						<span class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><em>5.00/5.00</em></span>
+						<small>Shops</small>
 					</div>
-					<h3><strong>Khoa Nguyễn</strong> đánh giá <a href="reviews-page.html">Bún đậu mắm tôm bà Thu</a></h3>
-					<h4>"Thật tuyệt vời"</h4>
-					<p>Hương vị bún đậu kết hợp mắm tôm thật đậm đà</p>
+					<h3><strong>Jhon Doe</strong> reviewed <a href="reviews-page.html">Fnac</a></h3>
+					<h4>"Avesome Experience"</h4>
+					<p>Et nec tantas accusamus salutatus, sit commodo veritus te</p>
 					<ul class="clearfix">
-						<li><small>Ngày đăng: 26.08.2018</small></li>
-						<li><a href="reviews-page.html" class="btn_1 small">Đọc đánh giá</a></li>
+						<li><small>Published: 26.08.2018</small></li>
+						<li><a href="reviews-page.html" class="btn_1 small">Read review</a></li>
 					</ul>
 				</div>
 			</div>
-
+			
 			<div class="item">
 				<div class="review_listing">
 					<div class="clearfix">
-						<figure><img src="assets/img/avatar.jpg" alt=""></figure>
-						<span class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half"></i><em>4.50/5.00</em></span>
+						<figure><img src="https://i.imgur.com/usFXtM1.png" alt=""></figure>
+						<span class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><em>5.00/5.00</em></span>
+						<small>Shops</small>
 					</div>
-					<h3><strong>Khoa Nguyễn</strong> đánh giá <a href="reviews-page.html">Bún đậu mắm tôm bà Thu</a></h3>
-					<h4>"Thật tuyệt vời"</h4>
-					<p>Hương vị bún đậu kết hợp mắm tôm thật đậm đà</p>
+					<h3><strong>Marika</strong> reviewed <a href="reviews-page.html">Fnac</a></h3>
+					<h4>"Great products"</h4>
+					<p>Et nec tantas accusamus salutatus, sit commodo veritus te</p>
 					<ul class="clearfix">
-						<li><small>Ngày đăng: 26.08.2018</small></li>
-						<li><a href="reviews-page.html" class="btn_1 small">Đọc đánh giá</a></li>
+						<li><small>Published: 26.08.2018</small></li>
+						<li><a href="reviews-page.html" class="btn_1 small">Read review</a></li>
 					</ul>
 				</div>
 			</div>
-
+			
 			<div class="item">
 				<div class="review_listing">
 					<div class="clearfix">
-						<figure><img src="assets/img/avatar.jpg" alt=""></figure>
-						<span class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half"></i><em>4.50/5.00</em></span>
+						<figure><img src="https://i.imgur.com/usFXtM1.png" alt=""></figure>
+						<span class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><em>5.00/5.00</em></span>
+						<small>Shops</small>
 					</div>
-					<h3><strong>Khoa Nguyễn</strong> đánh giá <a href="reviews-page.html">Bún đậu mắm tôm bà Thu</a></h3>
-					<h4>"Thật tuyệt vời"</h4>
-					<p>Hương vị bún đậu kết hợp mắm tôm thật đậm đà</p>
+					<h3><strong>Lukas Lee</strong> reviewed <a href="reviews-page.html">Fnac</a></h3>
+					<h4>"Excellent Support"</h4>
+					<p>Et nec tantas accusamus salutatus, sit commodo veritus te</p>
 					<ul class="clearfix">
-						<li><small>Ngày đăng: 26.08.2018</small></li>
-						<li><a href="reviews-page.html" class="btn_1 small">Đọc đánh giá</a></li>
+						<li><small>Published: 26.08.2018</small></li>
+						<li><a href="reviews-page.html" class="btn_1 small">Read review</a></li>
 					</ul>
 				</div>
 			</div>
-
+			
 			<div class="item">
 				<div class="review_listing">
 					<div class="clearfix">
-						<figure><img src="assets/img/avatar.jpg" alt=""></figure>
-						<span class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half"></i><em>4.50/5.00</em></span>
+						<figure><img src="https://i.imgur.com/usFXtM1.png" alt=""></figure>
+						<span class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><em>5.00/5.00</em></span>
+						<small>Shops</small>
 					</div>
-					<h3><strong>Khoa Nguyễn</strong> đánh giá <a href="reviews-page.html">Bún đậu mắm tôm bà Thu</a></h3>
-					<h4>"Thật tuyệt vời"</h4>
-					<p>Hương vị bún đậu kết hợp mắm tôm thật đậm đà</p>
+					<h3><strong>Margaret</strong> reviewed <a href="reviews-page.html">Fnac</a></h3>
+					<h4>"Perfect"</h4>
+					<p>Et nec tantas accusamus salutatus, sit commodo veritus te</p>
 					<ul class="clearfix">
-						<li><small>Ngày đăng: 26.08.2018</small></li>
-						<li><a href="reviews-page.html" class="btn_1 small">Đọc đánh giá</a></li>
+						<li><small>Published: 26.08.2018</small></li>
+						<li><a href="reviews-page.html" class="btn_1 small">Read review</a></li>
 					</ul>
 				</div>
 			</div>
-
+			
 			<div class="item">
 				<div class="review_listing">
 					<div class="clearfix">
-						<figure><img src="assets/img/avatar.jpg" alt=""></figure>
-						<span class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half"></i><em>4.50/5.00</em></span>
+						<figure><img src="https://i.imgur.com/usFXtM1.png" alt=""></figure>
+						<span class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><em>5.00/5.00</em></span>
+						<small>Shops</small>
 					</div>
-					<h3><strong>Khoa Nguyễn</strong> đánh giá <a href="reviews-page.html">Bún đậu mắm tôm bà Thu</a></h3>
-					<h4>"Thật tuyệt vời"</h4>
-					<p>Hương vị bún đậu kết hợp mắm tôm thật đậm đà</p>
+					<h3><strong>Mark Twain</strong> reviewed <a href="reviews-page.html">Fnac</a></h3>
+					<h4>"Shipping Very Fast"</h4>
+					<p>Et nec tantas accusamus salutatus, sit commodo veritus te</p>
 					<ul class="clearfix">
-						<li><small>Ngày đăng: 26.08.2018</small></li>
-						<li><a href="reviews-page.html" class="btn_1 small">Đọc đánh giá</a></li>
+						<li><small>Published: 26.08.2018</small></li>
+						<li><a href="#0" class="btn_1 small">Read review</a></li>
 					</ul>
 				</div>
 			</div>
@@ -218,19 +161,25 @@
 		<!-- /carousel -->
 	</div>
 	<!-- /container -->
-</div>
-<!-- /bg_color_1 -->
-
-<div class="call_section_3">
-	<div class="wrapper">
-		<div class="container clearfix">
-			<div class="col-lg-5 col-md-7 float-right">
-				<h3>Hãy để chúng tôi giúp bạn tìm bữa trưa</h3>
-				<p>Nhà hàng bún đậu mắm tôm bà Thu</p>
-				<p><a class="btn_1 add_top_10 wow bounceIn" href="pricing.html" data-wow-delay="0.5s">Xem đánh giá ngay!</a></p>
-			</div>
-		</div>
-		<!-- /container -->
 	</div>
-</div>
-<!-- /call_section -->
+	<script>
+		$(document).ready(function(){
+		  $(".owl-carousel").owlCarousel();
+		});
+	</script>
+
+	<div class="call_section_3">
+		<div class="wrapper">
+			<div class="container clearfix">
+				<div class="col-lg-5 col-md-7 float-right">
+					<h3>Hãy để chúng tôi giúp bạn tìm bữa trưa</h3>
+					<p>Nhà hàng bún đậu mắm tôm bà Thu</p>
+					<p><a class="btn_1 add_top_10 wow bounceIn" href="pricing.html" data-wow-delay="0.5s">Xem đánh giá ngay!</a></p>
+				</div>
+			</div>
+			<!-- /container -->
+		</div>
+	</div>
+
+</main>
+

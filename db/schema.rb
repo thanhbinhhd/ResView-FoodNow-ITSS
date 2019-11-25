@@ -107,7 +107,6 @@ ActiveRecord::Schema.define(version: 2019_11_20_141805) do
     t.datetime "confirmation_sent_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "admin"
     t.string "provider"
     t.string "uid"
     t.string "name"
