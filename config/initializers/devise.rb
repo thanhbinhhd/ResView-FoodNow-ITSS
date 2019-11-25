@@ -299,6 +299,8 @@ Devise.setup do |config|
 
   # config.omniauth :facebook, "App ID", "App Secret", callback_url: "http://localhost:3000/users/auth/facebook/callback"
   config.omniauth :facebook, "440796690193926", "9bb186d4e5a8bfedb3083950fde3e812"
+
+  config.omniauth :google_oauth2, "666239197556-m5lj1hvmtsakmsatlsenijtup21goltq.apps.googleusercontent.com", "DNVPZGUn13fiOIomvx-ohq58", {}
 end
 
 
