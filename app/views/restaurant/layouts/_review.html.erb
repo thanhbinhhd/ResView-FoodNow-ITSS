@@ -21,7 +21,7 @@
     <label>Bình luận</label>
       <%= f.hidden_field :restaurant_id, value: @res.id %>
       <%= f.text_area :content %><br />
-      <%= f.submit %>
+      <%= f.submit "Gửi đánh giá", class: "btn btn-primary" %>
   </div>
   <% end %>
   <% else %>
