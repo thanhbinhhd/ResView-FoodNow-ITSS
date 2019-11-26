@@ -9,7 +9,7 @@ class User < ApplicationRecord
 
   has_one_attached :avatar
 
-  devise :omniauthable, :omniauth_providers => [:facebook]
+  devise :omniauthable, :omniauth_providers => [:facebook, :google_oauth2]
 
   def self.new_with_session(params, session)
     super.tap do |user|

@@ -28,13 +28,15 @@
               </div>
               <% end %>
               <hr class="my-4">
-              <!-- <button type="button" class="btn btn-danger btn-sm w-100 my-2">
-                <i class="fab fa-google mr-2"></i> Sign in with Google
-              </button> -->
-
               <a href="<%= user_facebook_omniauth_authorize_path %>">
                 <button type="button" class="btn btn-primary btn-sm w-100 my-2">
                   <i class="fab fa-facebook-f mr-2"></i> Sign in with Facebook
+                </button>
+              </a>
+
+              <a href="<%= user_google_oauth2_omniauth_authorize_path %>">
+                <button type="button" class="btn btn-danger btn-sm w-100 my-2">
+                  <i class="fab fa-google mr-2"></i> Sign in with Google
                 </button>
               </a>
 
