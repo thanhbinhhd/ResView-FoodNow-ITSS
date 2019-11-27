@@ -2,15 +2,15 @@ class RestaurantController < ApplicationController
   before_action :check_admin, only: %i(create destroy edit update)
   def index
     if params[:name]
-      @all_res = Restaurant.where('name LIKE ? or address LIKE ?', "%#{params[:name]}%", "%#{params[:name]}%")
+      @all_res = Restaurant.has_deadline.where('name LIKE ? or address LIKE ?', "%#{params[:name]}%", "%#{params[:name]}%")
     else
-      @all_res = Restaurant.all.asc
+      @all_res = Restaurant.has_deadline.all.asc
     end
 
   end
 
   def show
-    @res = Restaurant.find_by(id: params[:id])
+    @res = Restaurant.find_by(id: params[:id]).has_deadline
     @foods = @res.foods.all
     @res_imgs = @res.res_images.all
     @res_comments = @res.comments.recent.paginate(:page => params[:page], :per_page => 5)

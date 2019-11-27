@@ -28,7 +28,7 @@
 
 	<div class="container margin_60_35">
 		<div class="main_title_3">
-			<h2>Nhà hàng được đánh giá cao nhất</h2>
+			<h2>Top nhà hàng</h2>
 			<hr>
 			<%= link_to "Xem tất cả", restaurant_index_path %>
 		</div>
@@ -90,12 +90,12 @@
 					</div>
 					<h4><%= r.name %></h4>
 					<p>
-						<%= r.description %>
+						<%= r.description.slice!(0, 50) %>
 					</p>
 					<ul class="clearfix">
 						<li><small>Published: <%= time_ago_in_words(r.created_at) %></small></li>
 						<li>
-							<%= link_to "Read more", restaurant_path(r), class: "btn_1 small" %>
+							<%= link_to "Xem chi tiết", restaurant_path(r), class: "btn_1 small" %>
 
 						</li>
 					</ul>

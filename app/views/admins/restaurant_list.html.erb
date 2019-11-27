@@ -74,7 +74,7 @@
                     <%= link_to  "Xem thêm", restaurant_path(r), class: "btn btn-sm  btn-primary small" %>
                   </div>
                   <div class="text-left float-lg-right">
-                    <%= link_to  "Xóa", restaurant_path(r),  method: :delete, class: "btn btn-sm small btn-danger" %>
+                    <%= link_to  "Xóa", restaurant_path(r), data: {confirm: "Are you sure?"}, method: :delete, class: "btn btn-sm small btn-danger" %>
                   </div>
                   <div class="text-left float-lg-right">
                     <%= link_to  "Chỉnh sửa", edit_restaurant_path(r), class: "btn btn-sm small btn-warning" %>

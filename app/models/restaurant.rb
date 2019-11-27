@@ -5,7 +5,7 @@ class Restaurant < ApplicationRecord
     has_many :res_images, dependent: :destroy
     has_many :transactions
 
-    default_scope {where "deadline > '#{Time.now}'"}
+    scope :has_deadline, -> {where "deadline > '#{Time.now}'"}
     scope :recent, -> { order(created_at: :desc) }
     scope :asc, -> { order(name: :asc) }
     scope :best, -> { order(vote_num: :desc) }
