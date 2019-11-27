@@ -20,7 +20,7 @@ class RestaurantController < ApplicationController
     @restaurant = Restaurant.create(restaurant_params)
     @restaurant.deadline = Time.now
     if @restaurant.save
-      redirect_to admin_root_path
+      redirect_to admin_restaurant_list_path
     end
   end
 
@@ -37,6 +37,7 @@ class RestaurantController < ApplicationController
   def update
     @restaurant = Restaurant.find_by(id: params[:id])
     @restaurant.update_attributes(restaurant_params)
+    redirect_to admin_restaurant_list_path
   end
 
   private
