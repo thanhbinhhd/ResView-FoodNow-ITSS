@@ -1,7 +1,7 @@
 class AdminsController < ApplicationController
   layout 'admin_application'
 
-  before_action :check_login, only: [:home]
+  before_action :check_login
 
   def dashboards
     render "admins/dashboard"

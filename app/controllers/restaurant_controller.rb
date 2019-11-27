@@ -10,7 +10,7 @@ class RestaurantController < ApplicationController
   end
 
   def show
-    @res = Restaurant.find_by(id: params[:id]).has_deadline
+    @res = Restaurant.find_by(id: params[:id])
     @foods = @res.foods.all
     @res_imgs = @res.res_images.all
     @res_comments = @res.comments.recent.paginate(:page => params[:page], :per_page => 5)
