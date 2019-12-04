@@ -25,6 +25,7 @@ class TransactionsController < ApplicationController
       deadline += 6.months
     end
     @res.update_attributes(deadline: deadline)
+    flash[:success] = "Create transaction successfully!"
     redirect_to admin_transaction_list_path
   end
 end

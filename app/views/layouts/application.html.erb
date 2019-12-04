@@ -10,14 +10,11 @@
 </head>
 
 <body>
-    <!-- <div class="container-fluid">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-    </div> -->
-    <div id="page">
-      <%= render "layouts/header" %>
-      <%= yield %>
-      <%= render "layouts/footer" %>
-    </div>
-  </body>
-  </html>
+  <div id="page">
+    <%= render "layouts/header" %>
+    <%= yield %>
+    <%= render "layouts/footer" %>
+  </div>
+</body>
+<%= custom_bootstrap_flash %>
+</html>
