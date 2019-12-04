@@ -2,20 +2,20 @@
 	<section class="hero_single version_1">
 		<div class="wrapper">
 			<div class="container">
-				<h3>Mọi thứ ở đây đều thật tuyệt vời!</h3>
-				<p>Tìm kiếm nhà hàng mà bạn mong muốn</p>
+				<h3>Everything here is amazing!</h3>
+				<p>Search for the restaurant you want</p>
 				<div class="row justify-content-center">
 					<div class="col-lg-9">
 						<form method="get" action="<%= restaurant_index_path %>">
 							<div class="row no-gutters custom-search-input-2">
 								<div class="col-lg-9">
 									<div class="form-group">
-										<input name="name" class="form-control" type="text" placeholder="Bạn đang muốn tìm ..." >
+										<input name="name" class="form-control" type="text" placeholder="You are looking for ..." >
 										<i class="fas fa-search"></i>
 									</div>
 								</div>
 								<div class="col-lg-3">
-									<input type="submit" value="Tìm kiếm">
+									<input type="submit" value="Search">
 								</div>
 							</div>
 							<!-- /row -->
@@ -28,9 +28,9 @@
 
 	<div class="container margin_60_35">
 		<div class="main_title_3">
-			<h2>Top nhà hàng</h2>
+			<h2>Top restaurant</h2>
 			<hr>
-			<%= link_to "Xem tất cả", restaurant_index_path %>
+			<%= link_to "See all", restaurant_index_path %>
 		</div>
 		<div class="row justify-content-center">
 			<% @best_res.each do |r| %>
@@ -65,8 +65,8 @@
 	<div class="bg_color_1">
 	<div class="container margin_60">
 		<div class="main_title_3">
-			<h2>Nhà hàng mới nhất</h2>
-			<%= link_to "Xem tất cả", restaurant_index_path %>
+			<h2>Latest restaurant</h2>
+			<%= link_to "See all", restaurant_index_path %>
 		</div>
 
 		<div id="reccomended" class="owl-carousel owl-theme">
@@ -95,7 +95,7 @@
 					<ul class="clearfix">
 						<li><small>Published: <%= time_ago_in_words(r.created_at) %></small></li>
 						<li>
-							<%= link_to "Xem chi tiết", restaurant_path(r), class: "btn_1 small" %>
+							<%= link_to "See details", restaurant_path(r), class: "btn_1 small" %>
 
 						</li>
 					</ul>
@@ -118,9 +118,9 @@
 		<div class="wrapper">
 			<div class="container clearfix">
 				<div class="col-lg-5 col-md-7 float-right">
-					<h3>Hãy để chúng tôi giúp bạn tìm bữa trưa</h3>
-					<p>Nhà hàng bún đậu mắm tôm bà Thu</p>
-					<p><a class="btn_1 add_top_10 wow bounceIn" href="pricing.html" data-wow-delay="0.5s">Xem đánh giá ngay!</a></p>
+					<h3>Let us help you find lunch</h3>
+					<p>Mrs. Thu's bun dau mam tom restaurant</p>
+					<p><a class="btn_1 add_top_10 wow bounceIn" href="pricing.html" data-wow-delay="0.5s">See the review now!</a></p>
 				</div>
 			</div>
 			<!-- /container -->

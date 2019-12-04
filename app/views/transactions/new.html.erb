@@ -1,35 +1,35 @@
 <div class="row">
     <div class="col-md-6 col-md-offset-3">
-      <center><h2>Thêm giao dịch</h2></center>
+      <center><h2>Add transaction</h2></center>
       <%= form_for :transaction, url: transactions_path, method: :POST do |t| %>
         <div class="form-group">
-          <label for="email">Chọn tên nhà hàng:</label>
+          <label for="email">Choose a restaurant name:</label>
           <%= t.select :restaurant_id,
             options_from_collection_for_select(@restaurants, "id", "name"),
             {}, {class: "form-control select2"} %>
         </div>
         <div class="form-group">
-          <label for="pwd">Lựa chọn gói sử dụng:</label>
+          <label for="pwd">Select the package to use:</label>
           <div class="radio">
             <label>
               <%= t.radio_button :price, '100000', :checked => true %>
-              100000 / tháng
+              100000 / month
             </label>
           </div>
           <div class="radio">
             <label>
               <%= t.radio_button :price, '200000', :checked => true %>
-              200000 / 3 tháng
+              200000 / 3 months
             </label>
           </div>
           <div class="radio">
             <label>
               <%= t.radio_button :price, '350000', :checked => true %>
-              350000 / 6 tháng
+              350000 / 6 months
             </label>
           </div>
         </div>
-        <%= t.submit "Tạo mới", class: "btn btn-success", width: "100%" %>
+        <%= t.submit "New", class: "btn btn-success", width: "100%" %>
       <% end %>
     </div>
 </div>

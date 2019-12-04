@@ -1,13 +1,13 @@
 <div class="box_general company_info">
   <div class="row">
-    <h5 style="width: 100%; padding: 10px 15px 0px 10px;border-bottom: 1px solid #eee;margin-bottom: 20px;">Đánh giá của bạn</h5>
+    <h5 style="width: 100%; padding: 10px 15px 0px 10px;border-bottom: 1px solid #eee;margin-bottom: 20px;">Your review</h5>
     <hr>
   </div>
   <% if user_signed_in? %>
   <%= form_for :comment, url: "/comments", method: :POST do |f| %>
   <div class="rating_submit">
     <div class="form-group">
-      <label class="d-block">Đánh giá Sao</label>
+      <label class="d-block">Rating Stars</label>
       <span class="rating">
         <%= f.radio_button :rating_input, "5", class: "rating-input",id: "5_star"%> <label for="5_star" class="rating-star"></label>
         <%= f.radio_button :rating_input, "4", class: "rating-input",id: "4_star"%> <label for="4_star" class="rating-star"></label>
@@ -18,13 +18,13 @@
     </div>
   </div>
   <div class="form-group">
-    <label>Bình luận</label>
+    <label>Comment</label>
       <%= f.hidden_field :restaurant_id, value: @res.id %>
       <%= f.text_area :content %><br />
-      <%= f.submit "Gửi đánh giá", class: "btn btn-primary" %>
+      <%= f.submit "Send comment", class: "btn btn-primary" %>
   </div>
   <% end %>
   <% else %>
-  Bạn cần <%= link_to  "đăng nhập", new_user_session_path %> để thực hiện chức năng này
+  You need to <%= link_to  "log in", new_user_session_path %> to use this function
   <% end %>
 </div>

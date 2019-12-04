@@ -28,22 +28,22 @@
       <div class="col-lg-9">
         <div class="review_card">
           <div class="row">
-            <h5 style="width: 100%; padding: 10px 15px 0px 10px;border-bottom: 1px solid #eee;margin-bottom: 20px;">Chỉnh sửa</h5>
+            <h5 style="width: 100%; padding: 10px 15px 0px 10px;border-bottom: 1px solid #eee;margin-bottom: 20px;">Edit</h5>
             <hr>
           </div>
           <div class="row">
             <%= form_for @restaurant, url: restaurant_path(@restaurant), html: {method: :patch} do |f| %>
             <div class="field">
-              <p>Tên cửa hàng</p>
+              <p>Name of restaurant</p>
               <%= f.text_area :name, placeholder: "name", class: "form-control" %></br>
-              <p>Địa chỉ</p>
+              <p>Address</p>
               <%= f.text_area :address, placeholder: "address", class: "form-control" %></br>
-              <p>Số điện thoại</p>
+              <p>Phone number</p>
               <%= f.text_area :phone, placeholder: "phone", class: "form-control" %></br>
-              <p>Thông tin</p>
+              <p>Infomation</p>
               <%= f.text_area :description, placeholder: "description", class: "form-control" %></br>
             </div>
-            <%= f.submit "Xong", class: "btn btn-primary",style: "margin-bottom: 10px;" %>
+            <%= f.submit "Done", class: "btn btn-primary",style: "margin-bottom: 10px;" %>
             <% end %>
           </div>
         </div>

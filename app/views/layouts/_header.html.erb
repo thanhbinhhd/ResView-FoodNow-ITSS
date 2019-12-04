@@ -7,11 +7,11 @@
   </div>
   <ul id="top_menu">
     <% if user_signed_in? %>
-    <li><%= link_to "Đăng xuất", destroy_user_session_path, class: "btn_top", method: :delete %></li>
+    <li><%= link_to "Log out", destroy_user_session_path, class: "btn_top", method: :delete %></li>
     <% elsif admin_signed_in? %>
-    <li><%= link_to "Admin Đăng xuất", destroy_admin_session_path, class: "btn_top btn-warning", method: :delete %></li>
+    <li><%= link_to "Admin Log out", destroy_admin_session_path, class: "btn_top btn-warning", method: :delete %></li>
     <% else %>
-    <li><%= link_to "Đăng nhập", new_user_session_path, class: "btn_top" %></li>
+    <li><%= link_to "Log in", new_user_session_path, class: "btn_top" %></li>
     <% end %>
 
   </ul>
@@ -27,20 +27,20 @@
   <nav id="menu" class="main-menu">
     <ul>
       <li><span>
-        <%= link_to "Trang chủ", root_path %>
+        <%= link_to "Home", root_path %>
       </span></li>
       <li><span>
-        <%= link_to "Giới thiệu", about_path %>
+        <%= link_to "About", about_path %>
       </span></li>
       <li><span>
-        <%= link_to "Liên hệ", contact_path %>
+        <%= link_to "Contact", contact_path %>
       </span></li>
       <li><span>
-        <%= link_to "Nhà hàng", restaurant_index_path %>
+        <%= link_to "Restaurants", restaurant_index_path %>
       </span></li>
       <% if user_signed_in? %>
       <li><span>
-        <%= link_to "Trang cá nhân", edit_user_registration_path %>
+        <%= link_to "Profile", edit_user_registration_path %>
       </span></li>
       <% end %>
     </ul>
