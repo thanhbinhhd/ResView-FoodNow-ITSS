@@ -37,7 +37,7 @@
 			<div class="col-lg-4 col-sm-6">
 				<%= link_to restaurant_path(r), class: "grid_item" do %>
 				<figure>
-					<%= image_tag r.res_images.first().image %>
+					<%= image_tag r.res_images.first().image.url %>
 
 					<div class="info">
 						<small><i class="fas fa-comment"></i> <%= r.comments.count %> Reviews</small>
@@ -74,7 +74,7 @@
 			<div class="item">
 				<div class="review_listing">
 					<div class="clearfix">
-						<figure><%= image_tag r.res_images.first().image %></figure>
+						<figure><%= image_tag r.res_images.first().image.url %></figure>
 						<span class="rating">
 						<% (1..5).each do |i| %>
 						<% if i <= r.vote_num %>

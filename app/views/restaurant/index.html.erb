@@ -37,7 +37,7 @@
               <figure>
                 <a href="<%= restaurant_path(r) %>">
                   <!-- <img src="img/brands/1.png" alt=""> -->
-                  <img src="<%= r.res_images.first().image %>" alt="">
+                  <img src="<%= r.res_images.first().image.url %>" alt="">
                 </a>
               </figure>
               <h3><%= r.name %></h3>
