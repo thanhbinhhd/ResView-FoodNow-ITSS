@@ -20,6 +20,7 @@ class RestaurantController < ApplicationController
     @restaurant = Restaurant.create(restaurant_params)
     @restaurant.deadline = Time.now
     if @restaurant.save
+      flash[:success] = "Create new restaurant is successfully!"
       redirect_to admin_restaurant_list_path
     end
   end
@@ -27,6 +28,7 @@ class RestaurantController < ApplicationController
   def destroy
     @restaurant = Restaurant.find_by(id: params[:id])
     @restaurant.destroy!
+    flash[:success] = "destroy successfully!"
     redirect_to request.referrer || admin_root_path
   end
 
@@ -37,6 +39,7 @@ class RestaurantController < ApplicationController
   def update
     @restaurant = Restaurant.find_by(id: params[:id])
     @restaurant.update_attributes(restaurant_params)
+    flash[:success] = "Update success!"
     redirect_to admin_restaurant_list_path
   end
 
@@ -48,6 +51,7 @@ class RestaurantController < ApplicationController
 
   def check_admin
     if !admin_signed_in?
+      flash[:error] = "Login to access this page! Please!"
       redirect_to new_admin_session_path
     end
   end
