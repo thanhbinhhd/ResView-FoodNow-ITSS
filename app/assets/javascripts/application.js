@@ -18,4 +18,4 @@
 //= require bootstrap-sprockets
 //= require js/functions
 //= require js/common_scripts
-
+//= require toastr
