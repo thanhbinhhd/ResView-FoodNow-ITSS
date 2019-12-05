@@ -26,7 +26,12 @@
               <%= f.text_area :phone, placeholder: "phone", class: "form-control" %></br>
               <p>Thông tin</p>
               <%= f.text_area :description, placeholder: "description", class: "form-control" %></br>
-              <%= f.file_field :image, class: "form-control", id: "food_image_file" %>
+              <%= f.fields_for :image do |p| %>
+              <div class="field">
+                 <%= p.label :image %><br>
+                 <%= p.file_field :image, :multiple => true, name:"image[image][]" %>
+               </div>
+             <% end %>
             </div>
           </div>
           <div class="modal-footer">

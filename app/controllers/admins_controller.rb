@@ -10,6 +10,7 @@ class AdminsController < ApplicationController
   def restaurants
       @all_res = Restaurant.all.asc
       @restaurant = Restaurant.new
+      @res_image = @restaurant.res_images.build
       render "admins/restaurant_list"
   end
 

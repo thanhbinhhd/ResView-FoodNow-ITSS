@@ -20,6 +20,9 @@ class RestaurantController < ApplicationController
     @restaurant = Restaurant.create(restaurant_params)
     @restaurant.deadline = Time.now
     if @restaurant.save
+      params[:image]['image'].each do |a|
+          @res_images = @restaurant.res_images.create!(:image => a)
+       end
       flash[:success] = "Create new restaurant is successfully!"
       redirect_to admin_restaurant_list_path
     end
@@ -46,7 +49,8 @@ class RestaurantController < ApplicationController
   private
 
   def restaurant_params
-    params.require(:restaurant).permit(:name, :address, :phone, :description)
+    params.require(:restaurant).permit(:name, :address, :phone, :description,
+                    image_attributes: [:id, :restaurant_id, :image])
   end
 
   def check_admin
