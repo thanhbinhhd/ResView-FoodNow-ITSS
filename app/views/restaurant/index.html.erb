@@ -8,13 +8,21 @@
             <div class="col-lg-9">
               <form method="get" action="<%= restaurant_index_path %>">
                 <div class="row no-gutters custom-search-input-2">
+                  <div class="col-lg-1">
+                    <select class="form-control h-100" name="category">
+                      <option selected value="0">All</option>
+                      <% @all_cate.each do |c| %>
+                      <option value="<%= c.id %>"><%= c.name %></option>
+                      <% end %>
+                    </select>
+                  </div>
                   <div class="col-lg-9">
                     <div class="form-group">
-                      <input name="name" class="form-control" type="text" placeholder="You are looking for ..." >
+                      <input name="name" class="form-control" autocomplete="off"  type="text" placeholder="You are looking for ..." >
                       <i class="fas fa-search"></i>
                     </div>
                   </div>
-                  <div class="col-lg-3">
+                  <div class="col-lg-2">
                     <input type="submit" value="Search">
                   </div>
                 </div>
@@ -29,7 +37,6 @@
     <div class="isotope-wrapper py-3">
       <% $count = 0 %>
       <% @all_res.each do |r| %>
-      <% if $count < 10 %>
       <div class="company_listing isotope-item high" style="width: 100%">
         <div class="row">
           <div class="col-md-9">
@@ -64,14 +71,12 @@
           </div>
         </div>
       </div>
-      <% $count+=1 %>
-      <% end %>
       <!-- /company_listing -->
       <% end %>
+      <%= will_paginate @all_res %>
     </div>
     <!-- /isotope-wrapper -->
 
-    <p class="text-center"><a href="#0" class="btn_1 rounded add_top_15">See more</a></p>
 
   </div>
 

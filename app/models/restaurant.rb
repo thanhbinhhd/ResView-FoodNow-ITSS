@@ -5,6 +5,7 @@ class Restaurant < ApplicationRecord
     has_many :res_images, dependent: :destroy
     accepts_nested_attributes_for :res_images
     has_many :transactions
+    belongs_to :category
 
     scope :has_deadline, -> {where "deadline > '#{Time.now}'"}
     scope :recent, -> { order(created_at: :desc) }
