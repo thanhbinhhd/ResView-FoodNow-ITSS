@@ -7,6 +7,8 @@ class CreateRestaurants < ActiveRecord::Migration[5.2]
       t.text :description
       t.float :vote_num
       t.datetime :deadline
+      t.references :category, foreign_key: true
+
       t.timestamps
     end
   end

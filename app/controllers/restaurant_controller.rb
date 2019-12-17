@@ -2,10 +2,18 @@ class RestaurantController < ApplicationController
   before_action :check_admin, only: %i(create destroy edit update)
   def index
     if params[:name]
-      @all_res = Restaurant.has_deadline.where('name LIKE ? or address LIKE ?', "%#{params[:name]}%", "%#{params[:name]}%")
+      if params[:category] == '0'
+        @all_res = Restaurant.has_deadline.where('name LIKE ? or address LIKE ?',
+            "%#{params[:name]}%", "%#{params[:name]}%").paginate(:page => params[:page], :per_page => 5)
+      else
+        @all_res = Restaurant.has_deadline.where('category_id = ? and (name LIKE ? or address LIKE ?)',
+            "#{params[:category]}", "%#{params[:name]}%", "%#{params[:name]}%").paginate(:page => params[:page], :per_page => 5)
+      end
     else
-      @all_res = Restaurant.has_deadline.all.asc
+      @all_res = Restaurant.has_deadline.all.asc.paginate(:page => params[:page], :per_page => 5)
     end
+
+    @all_cate = Category.all
 
   end
 
@@ -17,7 +25,7 @@ class RestaurantController < ApplicationController
   end
 
   def create
-    @restaurant = Restaurant.create(restaurant_params)
+    @restaurant = Category.find(rand(1..5)).restaurants.build(restaurant_params)
     @restaurant.deadline = Time.now
     if @restaurant.save
       params[:image]['image'].each do |a|
