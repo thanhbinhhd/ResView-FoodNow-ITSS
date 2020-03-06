@@ -13,7 +13,6 @@
     <% else %>
     <li><%= link_to "Log in", new_user_session_path, class: "btn_top" %></li>
     <% end %>
-
   </ul>
   <!-- /top_menu -->
   <a href="#menu" class="btn_mobile">
@@ -27,22 +26,32 @@
   <nav id="menu" class="main-menu">
     <ul>
       <li><span>
-        <%= link_to "Home", root_path %>
+        <%= link_to "Asian restaurant", root_path %>
       </span></li>
       <li><span>
-        <%= link_to "About", about_path %>
+        <%= link_to "American restaurant", about_path %>
       </span></li>
       <li><span>
-        <%= link_to "Contact", contact_path %>
+        <%= link_to "Affordable", contact_path %>
       </span></li>
       <li><span>
-        <%= link_to "Restaurants", restaurant_index_path %>
+        <%= link_to "Drinks", restaurant_index_path %>
       </span></li>
       <% if user_signed_in? %>
       <li><span>
         <%= link_to "Profile", edit_user_registration_path %>
       </span></li>
       <% end %>
+      <li>
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="You are looking for ...">
+          <div class="input-group-append">
+            <button class="btn btn-info" type="button" style="background-color: #3578fa">
+              <i class="fa fa-search"></i>
+            </button>
+          </div>
+        </div>
+      </li>      
     </ul>
-  </nav>
+  </nav>  
 </header>
